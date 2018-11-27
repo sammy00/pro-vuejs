@@ -1,12 +1,8 @@
-function messageFunction(name, weather) {
-  var message = 'Hello, Adam'
-  if (weather == 'sunny') {
-    var message = 'It is a nice day'
-    console.log(message)
-  } else {
-    var message = 'It is ' + weather + ' today'
-    console.log(message)
+function myFunc(name) {
+  let myLocalVar = 'sunny'
+  let innerFunction = function() {
+    return 'Hello ' + name + '. Today is ' + myLocalVar + '.'
   }
-  console.log(message)
+  return innerFunction()
 }
-messageFunction('Adam', 'raining')
+console.log(myFunc('Adam'))
