@@ -2,7 +2,7 @@
   <div id="app">
     <nav>
       <div class="nav-wrapper blue">
-        <a href="#" class="brand-logo center">To Do List</a>
+        <a href="#" class="brand-logo center">{{name}}'s To Do List</a>
       </div>
     </nav>
   </div>
@@ -10,6 +10,9 @@
 
 <script>
 export default {
-  name: "app"
+  name: "app",
+  data() {
+    return { name: "Adam" };
+  }
 };
 </script>
