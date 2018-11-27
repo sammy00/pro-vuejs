@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div v-for="p in products" v-bind:key="p.id" class="card m-1 p-1 bg-light">
-      <h4>
-        {{p.name}}
-        <span class="badge badge-pill badge-primary float-right">{{ p.price }}</span>
-      </h4>
-      <div class="card-text bg-white p-1">{{ p.description }}</div>
-    </div>
+    <ul class="collection">
+      <li v-for="p in products" v-bind:key="p.id" class="collection-item">
+        <h6 class="title">
+          <span class="badge teal white-text">{{p.price}}</span>
+          {{p.name}}
+        </h6>
+        <span>{{ p.description}}</span>
+      </li>
+    </ul>
   </div>
 </template>
 

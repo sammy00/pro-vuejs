@@ -12,8 +12,19 @@
         </div>
         <div class="col s9 green">
           <h4 class="white-text">Products</h4>
+          <div class="col s12">
+            <product-list/>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </template>
+
+<script>
+import ProductList from "./ProductList";
+
+export default {
+  components: { ProductList }
+};
+</script>
