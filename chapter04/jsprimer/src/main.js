@@ -1,4 +1,15 @@
 let myArray = [100, 'Adam', true]
-myArray[0] = 'Tuesday'
 
-console.log(`Index 0: ${myArray[0]}`)
+for (let i = 0; i < myArray.length; i++) {
+  console.log(`Index ${i}: ${myArray[i]}`)
+}
+
+console.log('---')
+
+myArray.forEach((value, index) => console.log(`Index ${index}: ${value}`))
+
+console.log('---')
+
+for (let v of myArray) {
+  console.log(`Value: ${v}`)
+}
