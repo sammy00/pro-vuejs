@@ -1,8 +1,5 @@
-function myFunc(name) {
-  let myLocalVar = 'sunny'
-  let innerFunction = function() {
-    return 'Hello ' + name + '. Today is ' + myLocalVar + '.'
-  }
-  return innerFunction()
+function messageFunction(weather) {
+  let message = `It is ${weather} today`
+  console.log(message)
 }
-console.log(myFunc('Adam'))
+messageFunction('raining')
