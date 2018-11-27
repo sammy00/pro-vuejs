@@ -8,3 +8,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 02. Understanding Vue.js
 - [ ] ~~Chapter 03. HTML and CSS Primer~~
 - [x] Chapter 04. Essential JavaScript Primer
+- [ ] Chapter 05. SportsStore: A Real Application
