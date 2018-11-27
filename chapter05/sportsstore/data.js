@@ -64,8 +64,7 @@ let data = [
   },
 ]
 
-//module.exports = function() {
-export default function() {
+module.exports = function() {
   return {
     products: data,
     categories: [...new Set(data.map((p) => p.category))].sort(),
