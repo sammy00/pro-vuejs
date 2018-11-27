@@ -1,6 +1,12 @@
-const myFunc = (nameFunction) => 'Hello ' + nameFunction() + '.'
-const printName = (nameFunction, printFunction) =>
-  printFunction(myFunc(nameFunction))
-printName(function() {
-  return 'Adam'
-}, console.log)
+function messageFunction(name, weather) {
+  let message = 'Hello, Adam'
+  if (weather == 'sunny') {
+    let message = 'It is a nice day'
+    console.log(message)
+  } else {
+    let message = 'It is ' + weather + ' today'
+    console.log(message)
+  }
+  console.log(message)
+}
+messageFunction('Adam', 'raining')
