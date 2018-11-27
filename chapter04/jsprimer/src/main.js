@@ -1,3 +1,7 @@
-let myData1 = (5).toString() + String(5)
+let firstVal = '5'
+let secondVal = '5'
+let result = Number(firstVal) + Number(secondVal)
 
-console.log('Result: ' + myData1)
+console.log('Result: ' + result)
+console.log('firstVal as int: ' + parseInt(firstVal))
+console.log('secondVal as float: ' + parseFloat(secondVal))
