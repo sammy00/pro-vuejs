@@ -31,6 +31,21 @@
         </table>
       </div>
       <div class="row">
+        <form class="col s12" action="#">
+          <div class="col s10 input-field">
+            <input
+              type="text"
+              class="input-field"
+              v-model="newItemText"
+              placeholder="description of new item"
+            >
+          </div>
+          <div class="col s2 input-field">
+            <button class="btn" v-on:click="addNewTodo">Add</button>
+          </div>
+        </form>
+      </div>
+      <div class="row">
         <form action="#" class="center">
           <label>
             <input type="checkbox" v-model="hideCompleted">
@@ -54,12 +69,22 @@ export default {
         { action: "Collect Tickets", done: true },
         { action: "Call Joe", done: false }
       ],
-      hideCompleted: true
+      hideCompleted: true,
+      newItemText: ""
     };
   },
   computed: {
     filteredTasks() {
       return this.hideCompleted ? this.tasks.filter(t => !t.done) : this.tasks;
+    }
+  },
+  methods: {
+    addNewTodo() {
+      this.tasks.push({
+        action: this.newItemText,
+        done: false
+      });
+      this.newItemText = "";
     }
   }
 };
