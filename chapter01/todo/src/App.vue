@@ -6,30 +6,37 @@
       </div>
     </nav>
     <main class="container">
-      <div class="row">
-        <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Done</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row" v-for="t in filteredTasks" v-bind:key="t.action">
-              <td>{{t.action}}</td>
-              <!--<td>{{t.done}}</td>-->
-              <td>
-                <form action="#">
-                  <label>
-                    <input type="checkbox" v-model="t.done">
-                    <span>{{t.done}}</span>
-                  </label>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row" v-if="0==filteredTasks.length">
+        <div class="col s12 center">
+          <b>Nothing to do. Hurrah!</b>
+        </div>
       </div>
+      <template v-else>
+        <div class="row">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row" v-for="t in filteredTasks" v-bind:key="t.action">
+                <td>{{t.action}}</td>
+                <!--<td>{{t.done}}</td>-->
+                <td>
+                  <form action="#">
+                    <label>
+                      <input type="checkbox" v-model="t.done">
+                      <span>{{t.done}}</span>
+                    </label>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </template>
       <div class="row">
         <form class="col s12" action="#">
           <div class="col s10 input-field">
@@ -46,11 +53,16 @@
         </form>
       </div>
       <div class="row">
-        <form action="#" class="center">
-          <label>
-            <input type="checkbox" v-model="hideCompleted">
-            <span>Hide completed tasks</span>
-          </label>
+        <form action="#" class="col s12">
+          <div class="col s6">
+            <label class="right">
+              <input type="checkbox" v-model="hideCompleted">
+              <span>Hide completed tasks</span>
+            </label>
+          </div>
+          <div class="col s6">
+            <button class="btn" v-on:click="deleteCompleted">Delete Completed</button>
+          </div>
         </form>
       </div>
     </main>
@@ -63,12 +75,7 @@ export default {
   data() {
     return {
       name: "Adam",
-      tasks: [
-        { action: "Buy Flowers", done: false },
-        { action: "Get Shoes", done: false },
-        { action: "Collect Tickets", done: true },
-        { action: "Call Joe", done: false }
-      ],
+      tasks: [],
       hideCompleted: true,
       newItemText: ""
     };
@@ -84,7 +91,21 @@ export default {
         action: this.newItemText,
         done: false
       });
+      this.storeData();
       this.newItemText = "";
+    },
+    storeData() {
+      localStorage.setItem("todos", JSON.stringify(this.tasks));
+    },
+    deleteCompleted() {
+      this.tasks = this.tasks.filter(t => !t.done);
+      this.storeData();
+    }
+  },
+  created() {
+    let data = localStorage.getItem("todos");
+    if (null != data) {
+      this.tasks = JSON.parse(data);
     }
   }
 };
