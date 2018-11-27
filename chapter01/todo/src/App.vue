@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h4>To Do List</h4>
+    <nav>
+      <div class="nav-wrapper blue">
+        <a href="#" class="brand-logo center">To Do List</a>
+      </div>
+    </nav>
   </div>
 </template>
 
