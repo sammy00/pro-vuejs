@@ -1,14 +1,6 @@
-let myData = {
-  name: 'Adam',
-  weather: 'sunny',
-  printMessages() {
-    console.log(`Hello ${myData.name}.`)
-    console.log(`Today is ${myData.weather}.`)
-  },
-}
+import additionFunction from './maths/sum'
 
-let secondObject = {}
+let values = [10, 20, 30, 40, 50]
+let total = additionFunction(values)
 
-Object.assign(secondObject, myData)
-
-secondObject.printMessages()
+console.log(`Total: ${total}`)
