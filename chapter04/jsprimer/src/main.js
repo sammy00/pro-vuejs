@@ -1,8 +1,6 @@
-import { addition as add, multiply, subtract, mean as average } from './maths'
+import { asyncAdd } from './maths'
 
 let values = [10, 20, 30, 40, 50]
+let total = asyncAdd(values)
 
-console.log(`Add: ${add(values)}`)
-console.log(`Multiply: ${multiply(values)}`)
-console.log(`Subtract: ${subtract(1000, values)}`)
-console.log(`Average : ${average(values)}`)
+console.log(`Main Total: ${total}`)
