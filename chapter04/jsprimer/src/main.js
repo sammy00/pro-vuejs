@@ -7,4 +7,8 @@ let myData = {
   },
 }
 
-myData.printMessages()
+let secondObject = {}
+
+Object.assign(secondObject, myData)
+
+secondObject.printMessages()
