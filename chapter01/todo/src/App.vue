@@ -16,7 +16,15 @@
         <tbody>
           <tr class="row" v-for="t in tasks" v-bind:key="t.action">
             <td>{{t.action}}</td>
-            <td>{{t.done}}</td>
+            <!--<td>{{t.done}}</td>-->
+            <td>
+              <form action="#">
+                <label>
+                  <input type="checkbox" v-model="t.done">
+                  <span>{{t.done}}</span>
+                </label>
+              </form>
+            </td>
           </tr>
         </tbody>
       </table>
