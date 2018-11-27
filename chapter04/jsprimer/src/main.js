@@ -1,8 +1,8 @@
-import * as math from './maths'
+import { addition as add, multiply, subtract, mean as average } from './maths'
 
 let values = [10, 20, 30, 40, 50]
 
-console.log(`Sum: ${math.addition(values)}`)
-console.log(`Multiply: ${math.multiply(values)}`)
-console.log(`Subtract: ${math.subtract(1000, values)}`)
-console.log(`Mean: ${math.mean(values)}`)
+console.log(`Add: ${add(values)}`)
+console.log(`Multiply: ${multiply(values)}`)
+console.log(`Subtract: ${subtract(1000, values)}`)
+console.log(`Average : ${average(values)}`)
