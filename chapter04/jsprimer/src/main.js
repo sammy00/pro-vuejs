@@ -1,5 +1,7 @@
+let name = 'Adam'
+
 let myData = {
-  name: 'Adam',
+  name,
   weather: 'sunny',
 }
 
