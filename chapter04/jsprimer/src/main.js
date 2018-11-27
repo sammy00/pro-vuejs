@@ -1,6 +1,5 @@
 import { asyncAdd } from './maths'
 
 let values = [10, 20, 30, 40, 50]
-let total = asyncAdd(values)
 
-console.log(`Main Total: ${total}`)
+asyncAdd(values).then((total) => console.log(`Main Total: ${total}`))
