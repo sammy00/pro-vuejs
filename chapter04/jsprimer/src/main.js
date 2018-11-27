@@ -1,5 +1,5 @@
-function myFunc() {
-  console.log('This statement is inside the function')
+function myFunc(name, weather) {
+  console.log('Hello ' + name + '.')
+  console.log('It is ' + weather + ' today.')
 }
-console.log('This statement is outside the function')
-myFunc()
+myFunc('Adam', 'sunny')
