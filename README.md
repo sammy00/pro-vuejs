@@ -1,2 +1,10 @@
 # pro-vuejs
+
 Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
+
+## Progress
+
+- [x] Chapter 01. Your First Vue.js Application
+- [x] Chapter 02. Understanding Vue.js
+- [ ] ~~Chapter 03. HTML and CSS Primer~~
+- [ ] Chapter 04. Essential JavaScript Primer
