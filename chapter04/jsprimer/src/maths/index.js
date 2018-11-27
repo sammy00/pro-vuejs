@@ -8,9 +8,11 @@ export { addition }
 export * from './operations'
 
 export function asyncAdd(values) {
-  setTimeout(() => {
-    let total = addition(values)
-    console.log(`Async Total: ${total}`)
-    return total
-  }, 500)
+  return new Promise((callback) => {
+    setTimeout(() => {
+      let total = addition(values)
+      console.log(`Async Total: ${total}`)
+      callback(total)
+    }, 500)
+  })
 }
