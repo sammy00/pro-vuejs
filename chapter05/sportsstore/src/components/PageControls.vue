@@ -14,7 +14,7 @@
         class="waves-effect"
         v-bind:class="{ 'active': i==currentPage}"
       >
-        <a href="#!">{{i}}</a>
+        <a href="#!" v-on:click="setCurrentPage(i)">{{i}}</a>
       </li>
       <!--
       <li class="waves-effect">
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
   computed: {
@@ -50,6 +50,9 @@ export default {
     pageNumbers() {
       return [...Array(this.pageCount + 1).keys()].slice(1);
     }
+  },
+  methods: {
+    ...mapMutations(["setCurrentPage"])
   }
 };
 </script>
