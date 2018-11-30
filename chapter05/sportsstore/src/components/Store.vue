@@ -11,7 +11,7 @@
           <h4 class="white-text">Categories</h4>
         </div>
         <div class="col s9 green">
-          <h4 class="white-text">Products</h4>
+          <!--<h4 class="white-text">Products</h4>-->
           <div class="col s12">
             <product-list/>
           </div>

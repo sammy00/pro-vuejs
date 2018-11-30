@@ -3,7 +3,7 @@
     <ul class="collection">
       <li v-for="p in products" v-bind:key="p.id" class="collection-item">
         <h6 class="title">
-          <span class="badge teal white-text">{{p.price}}</span>
+          <span class="badge teal white-text">{{p.price | currency }}</span>
           {{p.name}}
         </h6>
         <span>{{ p.description}}</span>
@@ -17,6 +17,14 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["products"])
+  },
+  filters: {
+    currency(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      }).format(value);
+    }
   }
 };
 </script>
