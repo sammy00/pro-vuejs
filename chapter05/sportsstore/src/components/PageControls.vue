@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="right">
     <ul class="pagination">
       <!--
       <li v-bind:class="{ 'disabled': 1==currentPage}">
@@ -13,7 +13,9 @@
         v-bind:key="i"
         class="waves-effect"
         v-bind:class="{ 'active': i==currentPage}"
-      >{{ i }}</li>
+      >
+        <a href="#!">{{i}}</a>
+      </li>
       <!--
       <li class="waves-effect">
         <a href="#!">
