@@ -1,14 +1,20 @@
 <template>
   <div>
-    <ul class="collection">
-      <li v-for="p in products" v-bind:key="p.id" class="collection-item">
-        <h6 class="title">
-          <span class="badge teal white-text">{{p.price | currency }}</span>
-          {{p.name}}
-        </h6>
-        <span>{{ p.description}}</span>
-      </li>
-    </ul>
+    <v-list>
+      <template v-for="(p,index) in products">
+        <!--<v-list-tile v-for="p in products" :key="p.id">-->
+        <v-list-tile :key="p.id">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ p.name }}</v-list-tile-title>
+            <v-list-tile-sub-title>{{ p.description }}</v-list-tile-sub-title>
+          </v-list-tile-content>
+          <v-list-tile-action>
+            <v-chip color="teal" small text-color="white">{{ p.price | currency }}</v-chip>
+          </v-list-tile-action>
+        </v-list-tile>
+        <v-divider :key="index"></v-divider>
+      </template>
+    </v-list>
     <page-controls/>
   </div>
 </template>

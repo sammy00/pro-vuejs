@@ -22,13 +22,8 @@
             <v-card-text>More...</v-card-text>
           </v-card>
         </v-flex>
-        <v-flex col sm9 green>
-          <!--<h4 class="white-text">Products</h4>-->
-          <v-layout row>
-            <div class="col s12">
-              <product-list/>
-            </div>
-          </v-layout>
+        <v-flex col sm9>
+          <product-list/>
         </v-flex>
       </v-layout>
     </v-container>

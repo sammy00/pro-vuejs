@@ -20,12 +20,14 @@ export default new Vuex.Store({
   state: {
     products: testData,
     productsTotal: testData.length,
-    currentPage: 1,
+    //currentPage: 1,
+    currentPage: 0,
     pageSize: 4,
   },
   getters: {
     processedProducts: (state) => {
-      let index = (state.currentPage - 1) * state.pageSize
+      //let index = (state.currentPage - 1) * state.pageSize
+      let index = state.currentPage * state.pageSize
       return state.products.slice(index, index + state.pageSize)
     },
     pageCount: (state) => Math.ceil(state.productsTotal / state.pageSize),

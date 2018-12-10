@@ -1,46 +1,35 @@
 <template>
-  <div class="row">
-    <div class="input-field col s6">
-      <select v-on:change="changePageSize">
-        <option value="4">4 per page</option>
-        <option value="8">8 per page</option>
-        <option value="12">12 per page</option>
-      </select>
-      <label>Page Size</label>
-    </div>
-    <div class="right">
-      <ul class="pagination">
-        <!--
-      <li v-bind:class="{ 'disabled': 1==currentPage}">
-        <a href="#!">
-          <i class="material-icons">chevron_left</i>
-        </a>
-      </li>
-        -->
-        <li
-          v-for="i in pageNumbers"
-          v-bind:key="i"
-          class="waves-effect"
-          v-bind:class="{ 'active': i==currentPage}"
-        >
-          <a href="#!" v-on:click="setCurrentPage(i)">{{i}}</a>
-        </li>
-        <!--
-      <li class="waves-effect">
-        <a href="#!">
-          <i class="material-icons">chevron_right</i>
-        </a>
-      </li>
-        -->
-      </ul>
-    </div>
-  </div>
+  <v-layout row wrap>
+    <v-flex col sm12 md2>
+      <v-select :items="pageSizes" v-model="currentPageSize" label="Page Size" solo></v-select>
+    </v-flex>
+    <v-flex col sm12 md10 text-xs-right>
+      <v-btn-toggle v-model="currentPage">
+        <v-btn
+          v-for="(i,index) in pageNumbers"
+          :key="index"
+          @click="setCurrentPage(index)"
+          flat
+        >{{i}}</v-btn>
+      </v-btn-toggle>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
+  data() {
+    return {
+      pageSizes: [
+        { text: "4 per page", value: 4 },
+        { text: "8 per page", value: 8 },
+        { text: "12 per page", value: 12 }
+      ],
+      currentPageSize: null
+    };
+  },
   computed: {
     ...mapState(["currentPage"]),
     ...mapGetters(["pageCount"]),
@@ -52,6 +41,13 @@ export default {
     ...mapMutations(["setCurrentPage", "setPageSize"]),
     changePageSize($event) {
       this.setPageSize(Number($event.target.value));
+    }
+  },
+  watch: {
+    currentPageSize: function(to) {
+      if (to) {
+        this.setPageSize(Number(to));
+      }
     }
   }
 };
