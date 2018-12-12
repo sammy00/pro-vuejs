@@ -20,7 +20,6 @@ export default new Vuex.Store({
   state: {
     products: testData,
     productsTotal: testData.length,
-    //currentPage: 1,
     currentPage: 0,
     pageSize: 4,
     currentCategory: 'All',
@@ -52,15 +51,16 @@ export default new Vuex.Store({
   },
   mutations: {
     setCurrentCategory(state, category) {
+      console.log('hello' + category)
       state.currentCategory = category
-      state.currentPage = 1
+      state.currentPage = 0
     },
     setCurrentPage(state, page) {
       state.currentPage = page
     },
     setPageSize(state, size) {
       state.pageSize = size
-      state.currentPage = 1
+      state.currentPage = 0
     },
   },
 })

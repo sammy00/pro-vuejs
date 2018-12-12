@@ -4,7 +4,8 @@
       <v-select :items="pageSizes" v-model="currentPageSize" label="Page Size" solo></v-select>
     </v-flex>
     <v-flex col sm12 md10 text-xs-right>
-      <v-btn-toggle v-model="currentPage">
+      <!--<v-btn-toggle v-model="currentPage">-->
+      <v-btn-toggle v-model="mCurrentPage">
         <v-btn
           v-for="(i,index) in pageNumbers"
           :key="index"
@@ -35,6 +36,14 @@ export default {
     ...mapGetters(["pageCount"]),
     pageNumbers() {
       return [...Array(this.pageCount + 1).keys()].slice(1);
+    },
+    mCurrentPage: {
+      get() {
+        return this.currentPage;
+      },
+      set(value) {
+        this.setCurrentPage(value);
+      }
     }
   },
   methods: {
