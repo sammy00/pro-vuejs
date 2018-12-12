@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list>
+    <v-list two-line>
       <template v-for="p in products">
         <!--<v-list-tile v-for="p in products" :key="p.id">-->
         <v-list-tile :key="p.id">
@@ -9,7 +9,11 @@
             <v-list-tile-sub-title>{{ p.description }}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <v-chip color="teal" small text-color="white">{{ p.price | currency }}</v-chip>
+            <v-list-tile-action-text>
+              <v-chip color="teal" small text-color="white">{{ p.price | currency }}</v-chip>
+            </v-list-tile-action-text>
+            <!--<v-chip color="teal" small text-color="white">{{ p.price | currency }}</v-chip>-->
+            <v-btn small color="success" @click="handleProductAdd(p)">Add To Cart</v-btn>
           </v-list-tile-action>
         </v-list-tile>
         <v-divider></v-divider>
@@ -20,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import PageControls from "./PageControls";
 
 export default {
@@ -35,6 +39,13 @@ export default {
         style: "currency",
         currency: "USD"
       }).format(value);
+    }
+  },
+  methods: {
+    ...mapMutations({ addProduct: "cart/addProduct" }),
+    handleProductAdd(product) {
+      this.addProduct(product);
+      this.$router.push("/cart");
     }
   }
 };
