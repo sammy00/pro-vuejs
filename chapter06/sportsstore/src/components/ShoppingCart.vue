@@ -21,6 +21,11 @@
                 @remove="remove"
               />
             </template>
+            <template slot="footer">
+              <td :colspan="headers.length">
+                <p class="text-sm-right">Total: {{ totalPrice | currency }}</p>
+              </td>
+            </template>
           </v-data-table>
         </v-flex>
       </v-layout>
