@@ -1,14 +1,14 @@
 <template>
-  <div class="float-right">
-    <small>
+  <v-toolbar-items class="hidden-sm-and-down">
+    <v-btn flat>
       Your cart:
       <span v-if="itemCount > 0">{{ itemCount }} item(s) {{ totalPrice | currency }}</span>
       <span v-else>(empty)</span>
-    </small>
-    <router-link to="/cart" class="btn btn-sm bg-dark text-white" v-bind:disabled="itemCount == 0">
-      <i class="fa fa-shopping-cart"></i>
-    </router-link>
-  </div>
+    </v-btn>
+    <v-btn icon to="/cart" v-bind:disabled="itemCount == 0">
+      <v-icon>shopping_cart</v-icon>
+    </v-btn>
+  </v-toolbar-items>
 </template>
 
 <script>

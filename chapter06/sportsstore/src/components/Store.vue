@@ -2,6 +2,8 @@
   <v-app>
     <v-toolbar>
       <v-toolbar-title class="text-uppercase">Sports Store</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <cart-summary/>
     </v-toolbar>
     <v-container fluid grid-list-md>
       <v-layout row wrap>
@@ -17,10 +19,11 @@
 </template>
 
 <script>
+import CartSummary from "./CartSummary";
 import CategoryControls from "./CategoryControls";
 import ProductList from "./ProductList";
 
 export default {
-  components: { CategoryControls, ProductList }
+  components: { CartSummary, CategoryControls, ProductList }
 };
 </script>
