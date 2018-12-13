@@ -12,6 +12,12 @@ import router from './router'
 
 Vue.use(Vuetify)
 
+Vue.filter('currency', (value) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+    value
+  )
+)
+
 new Vue({
   render: (h) => h(App),
   router,
