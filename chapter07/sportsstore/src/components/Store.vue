@@ -11,6 +11,7 @@
           <category-controls/>
         </v-flex>
         <v-flex col sm12 md9>
+          <search/>
           <product-list/>
         </v-flex>
       </v-layout>
@@ -22,8 +23,13 @@
 import CartSummary from "./CartSummary";
 import CategoryControls from "./CategoryControls";
 import ProductList from "./ProductList";
+import Search from "./Search";
+import { mapMutations } from "vuex";
 
 export default {
-  components: { CartSummary, CategoryControls, ProductList }
+  components: { CartSummary, CategoryControls, ProductList, Search },
+  methods: {
+    ...mapMutations(["setShowSearch"])
+  }
 };
 </script>

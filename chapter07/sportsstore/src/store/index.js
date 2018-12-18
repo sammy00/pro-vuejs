@@ -25,7 +25,7 @@ export default new Vuex.Store({
     pageSize: 4,
     searchTerm: '',
     serverPageCount: 0,
-    showSearch: false,
+    showSearch: true,
   },
   actions: {
     clearSearchTerm(context) {
@@ -78,13 +78,6 @@ export default new Vuex.Store({
       context.commit('_setPageSize', size)
       context.dispatch('getPage', 2)
     },
-    setSearchTerm(state, term) {
-      state.searchTerm = term
-      state.currentPage = 1
-    },
-    setShowSearch(state, show) {
-      state.showSearch = show
-    },
   },
   getters: {
     //productsFilteredByCategory(state) {
@@ -118,6 +111,13 @@ export default new Vuex.Store({
     },
     setPageCount(state, count) {
       state.serverPageCount = Math.ceil(Number(count) / state.pageSize)
+    },
+    setSearchTerm(state, term) {
+      state.searchTerm = term
+      state.currentPage = 1
+    },
+    setShowSearch(state, show) {
+      state.showSearch = show
     },
     _setCurrentCategory(state, category) {
       state.currentCategory = category
