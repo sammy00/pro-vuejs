@@ -1,36 +1,41 @@
 <template>
-  <div class="m-2">
-    <h4 class="bg-primary text-white text-center p-2">SportsStore Administration</h4>
-    <h4
-      v-if="showFailureMessage"
-      class="bg-danger text-white text-center p-2 my-2"
-    >Authentication Failed. Please try again.</h4>
-    <div class="form-group">
-      <label>Username</label>
-      <input class="form-control" v-model="$v.username.$model">
-      <validation-error v-bind:validation="$v.username"/>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" v-model="$v.password.$model">
-      <validation-error v-bind:validation="$v.password"/>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-primary" v-on:click="handleAuth">Log In</button>
-    </div>
-  </div>
+  <v-app>
+    <v-toolbar color="primary">
+      <v-toolbar-title class="text-uppercase white--text">SportsStore Administration</v-toolbar-title>
+    </v-toolbar>
+    <v-container>
+      <v-form>
+        <v-text-field label="Username" v-model="$v.username.$model" required></v-text-field>
+        <validation-error v-bind:validation="$v.username"/>
+
+        <v-text-field
+          label="Password"
+          v-model="$v.password.$model"
+          :append-icon="show ? 'visibility_off' : 'visibility'"
+          :type=" show ? 'text':'password'"
+          @click:append="show = !show"
+        ></v-text-field>
+        <validation-error v-bind:validation="$v.password"/>
+
+        <v-btn color="primary" @click="handleAuth">Log In</v-btn>
+      </v-form>
+      <v-alert type="error" v-model="showFailureMessage">Authentication Failed. Please try again.</v-alert>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
 import { required } from "vuelidate/lib/validators";
 import { mapActions, mapState } from "vuex";
 import ValidationError from "../ValidationError";
+
 export default {
   components: { ValidationError },
   data: function() {
     return {
       username: "admin",
       password: "secret",
+      show: false,
       showFailureMessage: false
     };
   },
@@ -47,8 +52,10 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         await this.authenticate({
-          name: this.username,
-          password: this.password
+          //name: this.username,
+          //password: this.password
+          name: this.$v.username.$model,
+          password: this.$v.password.$model
         });
         if (this.authenticated) {
           this.$router.push("/admin");
