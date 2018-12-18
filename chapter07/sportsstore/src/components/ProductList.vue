@@ -16,6 +16,7 @@
             <v-btn small color="success" @click="handleProductAdd(p)">Add To Cart</v-btn>
           </v-list-tile-action>
         </v-list-tile>
+        <!-- eslint-disable-next-line -->
         <v-divider></v-divider>
       </template>
     </v-list>

@@ -4,15 +4,22 @@
       <v-select :items="pageSizes" v-model="currentPageSize" label="Page Size" solo></v-select>
     </v-flex>
     <v-flex col sm12 md10 text-xs-right>
-      <!--<v-btn-toggle v-model="currentPage">-->
-      <v-btn-toggle v-model="mCurrentPage">
-        <v-btn
-          v-for="(i,index) in pageNumbers"
-          :key="index"
-          @click="setCurrentPage(index)"
-          flat
-        >{{i}}</v-btn>
+      <v-btn icon :disabled="1==mCurrentPage" @click="setCurrentPage(mCurrentPage-1)">
+        <v-icon>chevron_left</v-icon>
+      </v-btn>
+      <span v-if="mCurrentPage>4">
+        <v-btn icon @click="setCurrentPage(1)" color="grey lighten-2">1</v-btn>
+        <span>...</span>
+      </span>
+      <v-btn-toggle v-model="currentPageIndex">
+        <v-btn v-for="i in pageNumbers" :key="i" @click="setCurrentPage(i)" flat>{{i}}</v-btn>
       </v-btn-toggle>
+      <span v-if="mCurrentPage<=pageCount-4">...
+        <v-btn icon @click="setCurrentPage(pageCount)" color="grey lighten-2">{{pageCount}}</v-btn>
+      </span>
+      <v-btn icon :disabled="pageCount==mCurrentPage" @click="setCurrentPage(mCurrentPage+1)">
+        <v-icon>chevron_right</v-icon>
+      </v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -35,7 +42,19 @@ export default {
     ...mapState(["currentPage"]),
     ...mapGetters(["pageCount"]),
     pageNumbers() {
-      return [...Array(this.pageCount + 1).keys()].slice(1);
+      if (this.pageCount < 4) {
+        return [...Array(this.pageCount + 1).keys()].slice(1);
+      } else if (this.mCurrentPage <= 4) {
+        return [1, 2, 3, 4, 5];
+      } else if (this.mCurrentPage > this.pageCount - 4) {
+        return [...Array(5).keys()].reverse().map(v => this.pageCount - v);
+      } else {
+        return [
+          this.mCurrentPage - 1,
+          this.mCurrentPage,
+          this.mCurrentPage + 1
+        ];
+      }
     },
     mCurrentPage: {
       get() {
@@ -44,6 +63,12 @@ export default {
       set(value) {
         this.setCurrentPage(value);
       }
+    },
+    currentPageIndex: {
+      get() {
+        return this.mCurrentPage - 1;
+      },
+      set() {}
     }
   },
   methods: {

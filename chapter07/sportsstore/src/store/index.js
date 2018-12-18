@@ -19,7 +19,7 @@ export default new Vuex.Store({
     products: [],
     categoriesData: [],
     productsTotal: 0,
-    currentPage: 0,
+    currentPage: 1,
     pageSize: 4,
     currentCategory: 'All',
   },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
       )
     },
     processedProducts: (state, getters) => {
-      let index = state.currentPage * state.pageSize
+      let index = (state.currentPage - 1) * state.pageSize
       //return state.products.slice(index, index + state.pageSize)
       return getters.productsFilteredByCategory.slice(
         index,
@@ -58,9 +58,8 @@ export default new Vuex.Store({
   },
   mutations: {
     setCurrentCategory(state, category) {
-      console.log('hello' + category)
       state.currentCategory = category
-      state.currentPage = 0
+      state.currentPage = 1
     },
     setCurrentPage(state, page) {
       state.currentPage = page
@@ -72,7 +71,7 @@ export default new Vuex.Store({
     },
     setPageSize(state, size) {
       state.pageSize = size
-      state.currentPage = 0
+      state.currentPage = 1
     },
   },
 })
