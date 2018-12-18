@@ -23,9 +23,16 @@ export default new Vuex.Store({
     currentCategory: 'All',
     pages: [],
     pageSize: 4,
+    searchTerm: '',
     serverPageCount: 0,
+    showSearch: false,
   },
   actions: {
+    clearSearchTerm(context) {
+      context.commit('setSearchTerm', '')
+      context.commit('clearPages')
+      context.dispatch('getPage', 2)
+    },
     async getData(context) {
       await context.dispatch('getPage', 2)
       context.commit('setCategories', (await Axios.get(categoriesUrl)).data)
@@ -37,6 +44,11 @@ export default new Vuex.Store({
       if (context.state.currentCategory != 'All') {
         url += `&category=${context.state.currentCategory}`
       }
+
+      if ('' != context.state.searchTerm) {
+        url += `&q=${context.state.searchTerm}`
+      }
+
       let response = await Axios.get(url)
       context.commit('setPageCount', response.headers['x-total-count'])
       context.commit('addPage', {
@@ -44,6 +56,11 @@ export default new Vuex.Store({
         data: response.data,
         pageCount: getPageCount,
       })
+    },
+    search(context, term) {
+      context.commit('setSearchTerm', term)
+      context.commit('clearPages')
+      context.dispatch('getPage', 2)
     },
     setCurrentCategory(context, category) {
       context.commit('clearPages')
@@ -60,6 +77,13 @@ export default new Vuex.Store({
       context.commit('clearPages')
       context.commit('_setPageSize', size)
       context.dispatch('getPage', 2)
+    },
+    setSearchTerm(state, term) {
+      state.searchTerm = term
+      state.currentPage = 1
+    },
+    setShowSearch(state, show) {
+      state.showSearch = show
     },
   },
   getters: {
