@@ -12,8 +12,8 @@
             <td>{{ props.item.category }}</td>
             <td>{{ props.item.price | currency }}</td>
             <td>
-              <v-btn small color="error" @click="removeProduct(p)">Delete</v-btn>
-              <v-btn small color="error" @click="handleEdit(p)">Edit</v-btn>
+              <v-btn small color="error" @click="removeProduct(props.item)">Delete</v-btn>
+              <v-btn small color="error" @click="handleEdit(props.item)">Edit</v-btn>
             </td>
           </template>
         </v-data-table>
