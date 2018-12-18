@@ -1,17 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Admin from '../components/admin/Admin'
-import Authentication from '../components/admin/Authentication'
+//import Admin from '../components/admin/Admin'
+//import Authentication from '../components/admin/Authentication'
 import Checkout from '../components/Checkout'
-import OrderAdmin from '../components/admin/OrderAdmin'
+//import OrderAdmin from '../components/admin/OrderAdmin'
 import OrderThanks from '../components/OrderThanks'
-import ProductAdmin from '../components/admin/ProductAdmin'
-import ProductEditor from '../components/admin/ProductEditor'
+//import ProductAdmin from '../components/admin/ProductAdmin'
+//import ProductEditor from '../components/admin/ProductEditor'
 import Store from '../components/Store'
 import ShoppingCart from '../components/ShoppingCart'
 
 import dataStore from '../store'
+
+const Authentication = () =>
+  import(/* webpackChunkName: "admin" */ '../components/admin/Authentication')
+const Admin = () =>
+  import(/* webpackChunkName: "admin" */ '../components/admin/Admin')
+const ProductAdmin = () =>
+  import(/* webpackChunkName: "admin" */ '../components/admin/ProductAdmin')
+const OrderAdmin = () =>
+  import(/* webpackChunkName: "admin" */ '../components/admin/OrderAdmin')
+const ProductEditor = () =>
+  import(/* webpackChunkName: "admin" */ '../components/admin/ProductEditor')
 
 Vue.use(VueRouter)
 
