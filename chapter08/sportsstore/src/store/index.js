@@ -9,12 +9,12 @@ import OrdersModule from './orders'
 
 Vue.use(Vuex)
 
-const baseUrl = 'http://localhost:3500'
+const baseUrl = '/api'
 const productsUrl = `${baseUrl}/products`
 const categoriesUrl = `${baseUrl}/categories`
 
 export default new Vuex.Store({
-  strict: true,
+  strict: false,
   modules: { auth: AuthModule, cart: CartModule, orders: OrdersModule },
   state: {
     categoriesData: [],
