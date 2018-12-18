@@ -7,6 +7,7 @@ import Checkout from '../components/Checkout'
 import OrderAdmin from '../components/admin/OrderAdmin'
 import OrderThanks from '../components/OrderThanks'
 import ProductAdmin from '../components/admin/ProductAdmin'
+import ProductEditor from '../components/admin/ProductEditor'
 import Store from '../components/Store'
 import ShoppingCart from '../components/ShoppingCart'
 
@@ -30,6 +31,10 @@ export default new VueRouter({
       },
       children: [
         { path: 'products', component: ProductAdmin },
+        {
+          path: 'products/:op(create|edit)/:id(\\d+)?',
+          component: ProductEditor,
+        },
         { path: 'orders', component: OrderAdmin },
         { path: '', redirect: '/admin/products' },
       ],
