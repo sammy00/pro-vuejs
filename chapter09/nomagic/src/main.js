@@ -11,21 +11,21 @@ new Vue({
 
 import 'materialize-css/dist/css/materialize.min.css'
 
-let counter = 1
-let container = document.createElement('div')
-
-container.classList.add('card-panel', 'blue')
-
-let msg = document.createElement('h1')
-msg.classList.add('white-text')
-msg.textContent = 'Button Not Pressed'
-
-let button = document.createElement('button')
-button.textContent = 'Press Me'
-button.classList.add('btn', 'grey', 'center-align')
-button.onclick = () => (msg.textContent = `Button Presses: ${counter++}`)
-container.appendChild(msg)
-container.appendChild(button)
-
-let app = document.getElementById('app')
-app.parentElement.replaceChild(container, app)
+import Vue from 'vue'
+new Vue({
+  el: '#app',
+  data: {
+    counter: 0,
+  },
+  methods: {
+    handleClick() {
+      this.counter++
+    },
+  },
+  template: `<div class="card-panel grey">
+    <h1 class="white-text">
+      Button Presses: {{ counter }}
+    </h1>
+    <button class="btn grey" @click="handleClick"> Press Me </button>
+  </div>`,
+})
