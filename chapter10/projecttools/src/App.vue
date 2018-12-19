@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>Button Clicks: {{ counter }}</div>
+    <h1>Button Clicks: {{ counter }}</h1>
     <button v-on:click="incrementCounter">Press Me</button>
 
     <div id="nav">
