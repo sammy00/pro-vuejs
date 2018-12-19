@@ -1,28 +1,28 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  computed: {
+    message() {
+      return 0 == this.counter
+        ? "Button Not Pressed"
+        : `Button Presses: ${this.counter}`;
+    }
+  },
+  methods: {
+    handleClick() {
+      this.counter++;
+    }
+  },
+  template: `<div class="card-panel grey">
+    <h1 class="white-text">
+      {{ message }}
+    </h1>
+    <button class="btn grey" @click="handleClick"> Press Me </button>
+  </div>`
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
