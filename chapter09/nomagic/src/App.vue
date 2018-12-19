@@ -1,3 +1,9 @@
+<template>
+  <div class="card-panel grey">
+    <h1 class="white-text">{{ message }}</h1>
+    <button class="btn grey" @click="handleClick">Press Me</button>
+  </div>
+</template>
 
 <script>
 export default {
@@ -17,12 +23,6 @@ export default {
     handleClick() {
       this.counter++;
     }
-  },
-  template: `<div class="card-panel grey">
-    <h1 class="white-text">
-      {{ message }}
-    </h1>
-    <button class="btn grey" @click="handleClick"> Press Me </button>
-  </div>`
+  }
 };
 </script>
