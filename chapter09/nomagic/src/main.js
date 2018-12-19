@@ -17,10 +17,5 @@ import Vue from 'vue'
 new Vue({
   el: '#app',
   components: { custom: MyComponent },
-  template: `<div class="card-panel blue">
-  <h1 class="white-text center-align">
-    This is the main.js file
-  </h1>
-  <custom />
-</div>`,
+  template: `<custom />`,
 })
