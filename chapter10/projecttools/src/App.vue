@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  not a valid statement
+  //not a valid statement
   data() {
     return {
       counter: 0
