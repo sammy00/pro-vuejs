@@ -5,9 +5,9 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-let first = 'Hello'
-const second = 'World'
-console.log(`Message ${first},${second}`)
+//let first = 'Hello'
+//const second = 'World'
+//console.log(`Message ${first},${second}`)
 
 new Vue({
   router,
