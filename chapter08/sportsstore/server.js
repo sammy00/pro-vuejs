@@ -14,5 +14,5 @@ app.use(history())
 app.use('/', express.static('./dist'))
 
 app.listen(8080, function() {
-  console.log('HTTP Server running on port 80')
+  console.log('HTTP Server running on port 8080')
 })
