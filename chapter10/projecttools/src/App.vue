@@ -1,16 +1,35 @@
 <template>
   <div id="app">
+    <div>Button Clicks: {{ counter }}</div>
+    <button v-on:click="incrementCounter">Press Me</button>
+
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  methods: {
+    incrementCounter() {
+      this.counter++;
+    }
+  }
+};
+</script>
+
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
