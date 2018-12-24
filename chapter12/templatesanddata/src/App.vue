@@ -5,7 +5,7 @@
         Product:
         <span v-text="name"></span>
       </h3>
-      <p v-text="fragment" class="center-align"></p>
+      <p v-html="fragment" class="center-align"></p>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
@@ -19,9 +19,9 @@ export default {
   data: function() {
     return {
       name: "Lifejacket",
-      fragment: `<div class="form-group">
-Password
-<input class="form-control" />
+      fragment: `<div class="input-field">
+<input type="text">
+<label>Password</label>
 </div>`
     };
   },
