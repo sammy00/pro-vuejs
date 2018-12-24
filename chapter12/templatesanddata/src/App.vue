@@ -9,8 +9,10 @@
         <li class="collection-header">
           <h4>List item</h4>
         </li>
-        <li v-if="showElements" class="collection-item">{{name}}</li>
-        <li v-if="showElements" class="collection-item">{{price}}</li>
+        <template v-if="showElements">
+          <li class="collection-item">{{name}}</li>
+          <li class="collection-item">{{price}}</li>
+        </template>
         <li class="collection-item">Other list item</li>
       </ul>
     </div>
