@@ -33,18 +33,25 @@
         </li>
       </ul>
     </div>
+    <div class="center-align">
+      <button class="btn" v-on:click="toggleSort" v-bind:class="sort ? 'blue': 'grey'">Toggle Sort</button>
+      <button
+        class="btn"
+        v-on:click="toggleFilter"
+        v-bind:class="filter ? 'blue': 'grey'"
+      >Toggle Filter</button>
+    </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-
 export default {
   name: "MyComponent",
   data: function() {
     return {
-      pageSize: 3,
       currentPage: 1,
+      filter: false,
+      pageSize: 3,
       products: [
         { name: "Kayak", price: 275 },
         { name: "Lifejacket", price: 48.95 },
@@ -55,16 +62,25 @@ export default {
         { name: "Unsteady Chair", price: 29.95 },
         { name: "Human Chess Board", price: 75 },
         { name: "Bling Bling King", price: 1200 }
-      ]
+      ],
+      sort: false
     };
   },
   computed: {
+    dataItems() {
+      let data = this.filter
+        ? this.products.filter(p => p.price > 100)
+        : this.products;
+      return this.sort
+        ? data.concat().sort((p1, p2) => p2.price - p1.price)
+        : data;
+    },
     pageCount() {
-      return Math.ceil(this.products.length / this.pageSize);
+      return Math.ceil(this.dataItems.length / this.pageSize);
     },
     pageItems() {
       let start = (this.currentPage - 1) * this.pageSize;
-      return this.products.slice(start, start + this.pageSize);
+      return this.dataItems.slice(start, start + this.pageSize);
     }
   },
   filters: {
@@ -76,11 +92,16 @@ export default {
     }
   },
   methods: {
-    handleClick() {
-      Vue.set(this.products, 5, { name: "Running Shoes", price: 100 });
-    },
     selectPage(page) {
       this.currentPage = page;
+    },
+    toggleFilter() {
+      this.filter = !this.filter;
+      this.currentPage = 1;
+    },
+    toggleSort() {
+      this.sort = !this.sort;
+      this.currentPage = 1;
     }
   }
 };
