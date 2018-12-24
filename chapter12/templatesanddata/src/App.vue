@@ -5,7 +5,7 @@
         Product:
         <span v-text="name"></span>
       </h3>
-      <p v-html="fragment" class="center-align"></p>
+      <h4 v-if="showElements" class="center-align">{{ price }}</h4>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
@@ -19,15 +19,14 @@ export default {
   data: function() {
     return {
       name: "Lifejacket",
-      fragment: `<div class="input-field">
-<input type="text">
-<label>Password</label>
-</div>`
+      price: 275,
+      showElements: true
     };
   },
   methods: {
     handleClick() {
       // do nothing
+      this.showElements = !this.showElements;
     }
   }
 };
