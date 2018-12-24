@@ -1,8 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="card-panel blue white-text">
-      <h3 v-if="counter % 3 == 0" class="center-align">Product: {{name}}</h3>
-      <h3 v-else-if="counter % 3 == 1" class="center-align">Price: {{price}}</h3>
+      <h3 v-if="counter % 2 == 0" class="center-align">Product: {{name}}</h3>
       <h3 v-else class="center-align">Category: {{category}}</h3>
     </div>
     <div class="center-align">
@@ -30,4 +29,12 @@ export default {
   }
 };
 </script>
+
+<style>
+h3:first-child {
+  background-color: aquamarine;
+  padding: 10px;
+  color: black;
+}
+</style>
 
