@@ -5,16 +5,7 @@
         Product:
         <span v-text="name"></span>
       </h3>
-      <ul class="collection with-header black-text">
-        <li class="collection-header">
-          <h4>List item</h4>
-        </li>
-        <template v-if="showElements">
-          <li class="collection-item">{{name}}</li>
-          <li class="collection-item">{{price}}</li>
-        </template>
-        <li class="collection-item">Other list item</li>
-      </ul>
+      <h3 v-if="!showElements" class="center-align">Price: {{price}}</h3>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
