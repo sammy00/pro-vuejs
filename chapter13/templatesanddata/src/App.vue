@@ -5,13 +5,15 @@
     </div>
     <div class="row">
       <div class="col s10 offset-s1">
-        <table class="striped">
+        <table>
           <tr>
+            <th>Index</th>
             <th>Name</th>
             <th>Price</th>
           </tr>
           <tbody>
-            <tr v-for="p in products" :key="p.name">
+            <tr v-for="(p,i) in products" :key="p.name" :odd="i%2==0">
+              <td>{{ i+ 1 }}</td>
               <td>{{ p.name }}</td>
               <td>{{ p.price | currency }}</td>
             </tr>
@@ -34,7 +36,10 @@ export default {
       products: [
         { name: "Kayak", price: 275 },
         { name: "Lifejacket", price: 48.95 },
-        { name: "Soccer Ball", price: 19.5 }
+        { name: "Soccer Ball", price: 19.5 },
+        { name: "Corner Flags", price: 39.95 },
+        { name: "Stadium", price: 79500 },
+        { name: "Thinking Cap", price: 16 }
       ]
     };
   },
@@ -49,14 +54,14 @@ export default {
 
   methods: {
     handleClick() {
-      this.products.push(this.products.shift());
+      this.products = this.products.filter(p => p.price > 20);
     }
   }
 };
 </script>
 
 <style>
-#tagged {
-  background-color: coral;
+[odd] {
+  background-color: lightblue;
 }
 </style>
