@@ -1,6 +1,6 @@
 <template>
   <div class="card-panel blue white-text">
-    <h3 class="center-align">Product: {{ name | reverse | capitalize }}</h3>
+    <h3 class="center-align">Product: {{ name | capitalize | reverse }}</h3>
     <h4
       class="center-align"
     >Price: {{ getTotalPrice(lowTaxRate).toFixed(2) | currency(3) }} (Low Rate)</h4>
