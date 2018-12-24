@@ -1,6 +1,6 @@
 <template>
   <div class="card-panel blue white-text">
-    <h3 class="center-align">Product: {{ name }}</h3>
+    <h3 class="center-align">Product: {{ name | reverse | capitalize }}</h3>
     <h4
       class="center-align"
     >Price: {{ getTotalPrice(lowTaxRate).toFixed(2) | currency(3) }} (Low Rate)</h4>
@@ -15,20 +15,30 @@ export default {
   name: "MyComponent",
   data: function() {
     return {
-      name: "Kayak",
-      price: 275,
+      name: "Lifejacket",
+      price: 48.95,
+
       lowTaxRate: 12,
       highTaxRate: 20
     };
   },
   filters: {
-    currency(value, places) {
+    currency(value, places = 2) {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-        minimumFractionDigits: places || 2,
-        maximumFractionDigits: places || 2
+        minimumFractionDigits: places,
+        maximumFractionDigits: places
       }).format(value);
+    },
+    capitalize(value) {
+      return value[0].toUpperCase() + value.slice(1);
+    },
+    reverse(value) {
+      return value
+        .split("")
+        .reverse()
+        .join("");
     }
   },
   methods: {
