@@ -8,12 +8,14 @@
         <table class="stripped">
           <tr>
             <th>Index</th>
+            <th>Key</th>
             <th>Name</th>
             <th>Price</th>
           </tr>
           <tbody>
             <tr v-for="(p, key, i) in products" :key="p.name">
               <td>{{ i }}</td>
+              <td>{{ key }}</td>
               <td>{{ p.name }}</td>
               <td>{{ p.price | currency }}</td>
             </tr>
@@ -36,10 +38,10 @@ export default {
   data: function() {
     return {
       products: {
-        1: { name: "Kayak", price: 275 },
-        2: { name: "Lifejacket", price: 48.95 },
+        kayak: { name: "Kayak", price: 275 },
+        22: { name: "Lifejacket", price: 48.95 },
         3: { name: "Soccer Ball", price: 19.5 },
-        4: { name: "Corner Flags", price: 39.95 }
+        "4": { name: "Corner Flags", price: 39.95 }
       }
     };
   },
