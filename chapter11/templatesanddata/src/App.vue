@@ -1,7 +1,9 @@
 <template>
   <div class="card-panel blue white-text">
     <h3 class="center-align">Product: {{ name }}</h3>
-    <h4 class="center-align">Price: {{ getTotalPrice(lowTaxRate).toFixed(2) | currency }} (Low Rate)</h4>
+    <h4
+      class="center-align"
+    >Price: {{ getTotalPrice(lowTaxRate).toFixed(2) | currency(3) }} (Low Rate)</h4>
     <h4
       class="center-align"
     >Price: {{ getTotalPrice(highTaxRate).toFixed(2) | currency }} (High Rate)</h4>
@@ -20,10 +22,12 @@ export default {
     };
   },
   filters: {
-    currency(value) {
+    currency(value, places) {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "USD"
+        currency: "USD",
+        minimumFractionDigits: places || 2,
+        maximumFractionDigits: places || 2
       }).format(value);
     }
   },
