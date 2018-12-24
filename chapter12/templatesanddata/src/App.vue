@@ -1,11 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="card-panel blue">
-      <h3 :class="elemClasses" class="center-align">Product: {{name}}</h3>
+      <h3 :style="elemStyles" class="center-align">Product: {{name}}</h3>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
-      <button v-on:click="handleOtherClick" class="btn btn-primary">Or Press Me</button>
     </div>
   </div>
 </template>
@@ -16,15 +15,14 @@ export default {
   data: function() {
     return {
       name: "Lifejacket",
-      highlight1: false,
-      highlight2: false
+      highlight: false
     };
   },
   computed: {
-    elemClasses() {
+    elemStyles() {
       return {
-        "white-text": this.highlight1,
-        "flow-text": this.highlight2
+        border: "5px solid red",
+        "background-color": this.highlight ? "coral" : ""
       };
     }
   },
@@ -32,11 +30,7 @@ export default {
   methods: {
     handleClick() {
       // do nothing
-      this.highlight1 = !this.highlight1;
-    },
-    handleOtherClick() {
-      // do nothing
-      this.highlight2 = !this.highlight2;
+      this.highlight = !this.highlight;
     }
   }
 };
