@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "MyComponent",
   data: function() {
@@ -54,7 +56,7 @@ export default {
 
   methods: {
     handleClick() {
-      this.products[1] = { name: "Running Shoes", price: 100 };
+      Vue.set(this.products, 1, { name: "Running Shoes", price: 100 });
     }
   }
 };
