@@ -18,18 +18,16 @@ export default {
     };
   },
   computed: {
-    totalPrice() {
-      let tp = this.price + this.price * (this.taxRate / 100);
-      console.log(`Calculated: ${tp} (${this.taxRate})`);
-      return tp;
-    },
     lowTotalPrice() {
-      let tp = this.price + this.price * (this.lowTaxRate / 100);
-      return tp;
+      return this.getTotalPrice(this.lowTaxRate);
     },
     highTotalPrice() {
-      let tp = this.price + this.price * (this.highTaxRate / 100);
-      return tp;
+      return this.getTotalPrice(this.highTaxRate);
+    }
+  },
+  methods: {
+    getTotalPrice(taxRate) {
+      return this.price + this.price * (taxRate / 100);
     }
   }
 };
