@@ -25,7 +25,14 @@
     </div>
 
     <div class="center-align">
-      <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
+      <!-- eslint-disable-next-line vue/require-v-for-key -->
+      <!--<button v-for="i in 5" v-on:click="handleClick(i)" class="btn btn-primary">{{ i }}</button>-->
+      <ul class="pagination">
+        <!-- eslint-disable-next-line vue/require-v-for-key -->
+        <li class="waves-effect" v-for="i in 5" :class="pagination == i ? 'active':''" :key="i">
+          <a @click="handleClick(i)">{{ i }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -42,7 +49,8 @@ export default {
         22: { name: "Lifejacket", price: 48.95 },
         3: { name: "Soccer Ball", price: 19.5 },
         "4": { name: "Corner Flags", price: 39.95 }
-      }
+      },
+      pagination: 1
     };
   },
   filters: {
