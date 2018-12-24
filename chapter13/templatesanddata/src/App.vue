@@ -54,7 +54,7 @@ export default {
 
   methods: {
     handleClick() {
-      this.products = this.products.filter(p => p.price > 20);
+      this.products[1] = { name: "Running Shoes", price: 100 };
     }
   }
 };
