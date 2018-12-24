@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="card-panel blue">
-      <h3 v-bind="attrValues" class="center-align">Product: {{name}}</h3>
+      <h3 v-bind:text-content.prop="textContent" class="center-align"></h3>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
@@ -19,14 +19,8 @@ export default {
     };
   },
   computed: {
-    attrValues() {
-      return {
-        class: this.highlight ? ["white-text"] : [],
-        style: {
-          border: this.highlight ? "5px solid red" : ""
-        },
-        "data-size": this.highlight ? "big" : "small"
-      };
+    textContent() {
+      return this.highlight ? "Highlight!" : `Product: ${this.name}`;
     }
   },
 
