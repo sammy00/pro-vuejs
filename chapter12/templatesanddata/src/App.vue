@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="card-panel blue">
-      <h3 :style="elemStyles" class="center-align">Product: {{name}}</h3>
+      <h3 :data-size="size" class="center-align">Product: {{name}}</h3>
     </div>
     <div class="center-align">
       <button v-on:click="handleClick" class="btn btn-primary">Press Me</button>
@@ -19,11 +19,8 @@ export default {
     };
   },
   computed: {
-    elemStyles() {
-      return {
-        border: "5px solid red",
-        "background-color": this.highlight ? "coral" : ""
-      };
+    size() {
+      return this.highlight ? "big" : "small";
     }
   },
 
@@ -37,10 +34,10 @@ export default {
 </script>
 
 <style>
-h3:first-child {
-  background-color: aquamarine;
-  padding: 10px;
-  color: black;
+[data-size="big"] {
+  font-size: 40pt;
+}
+[data-size="small"] {
+  font-size: 20pt;
 }
 </style>
-
