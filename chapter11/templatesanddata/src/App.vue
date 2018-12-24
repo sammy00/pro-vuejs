@@ -1,8 +1,10 @@
 <template>
   <div class="card-panel blue white-text">
     <h3 class="center-align">Product: {{ name }}</h3>
-    <h4 class="center-align">Price: ${{ getTotalPrice(lowTaxRate).toFixed(2) }} (Low Rate)</h4>
-    <h4 class="center-align">Price: ${{ getTotalPrice(highTaxRate).toFixed(2) }} (High Rate)</h4>
+    <h4 class="center-align">Price: {{ getTotalPrice(lowTaxRate).toFixed(2) | currency }} (Low Rate)</h4>
+    <h4
+      class="center-align"
+    >Price: {{ getTotalPrice(highTaxRate).toFixed(2) | currency }} (High Rate)</h4>
   </div>
 </template>
 
@@ -16,6 +18,14 @@ export default {
       lowTaxRate: 12,
       highTaxRate: 20
     };
+  },
+  filters: {
+    currency(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      }).format(value);
+    }
   },
   methods: {
     getTotalPrice(taxRate) {
