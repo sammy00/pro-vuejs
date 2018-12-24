@@ -11,7 +11,7 @@
             <th>Price</th>
           </tr>
           <tbody>
-            <tr v-for="p in products">
+            <tr v-for="p in products" :key="p.name">
               <td>{{ p.name }}</td>
               <td>{{ p.price | currency }}</td>
             </tr>
@@ -49,18 +49,14 @@ export default {
 
   methods: {
     handleClick() {
-      // do nothing
-      this.highlight = !this.highlight;
+      this.products.push(this.products.shift());
     }
   }
 };
 </script>
 
 <style>
-[data-size="big"] {
-  font-size: 40pt;
-}
-[data-size="small"] {
-  font-size: 20pt;
+#tagged {
+  background-color: coral;
 }
 </style>
