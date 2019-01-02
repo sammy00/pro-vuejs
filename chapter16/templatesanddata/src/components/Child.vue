@@ -1,6 +1,6 @@
 <template>
   <div class="card-panel grey darken-1 white-text">
-    <slot>
+    <slot name="header">
       <h4>Use the form fields to edit the data</h4>
     </slot>
 
@@ -16,6 +16,8 @@
       <label>Price</label>
       <input v-model.number="product.price">
     </div>
+    <slot name="footer"></slot>
+
     <div class="row">
       <button class="btn" @click="doSubmit">Submit</button>
     </div>
