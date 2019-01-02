@@ -1,5 +1,9 @@
 <template>
   <div class="card-panel grey darken-1 white-text">
+    <slot>
+      <h4>Use the form fields to edit the data</h4>
+    </slot>
+
     <div class="row">
       <label>Name</label>
       <input v-model="product.name">
