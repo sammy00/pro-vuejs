@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "app",
   data() {
@@ -56,7 +58,9 @@ export default {
     doChange() {
       this.checked = !this.checked;
       this.names.reverse();
+      Vue.nextTick(() => console.log("Callback Invoked"));
     }
   }
 };
 </script>
+
