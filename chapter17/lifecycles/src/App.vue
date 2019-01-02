@@ -30,7 +30,7 @@ export default {
     console.log("beforeCreate method called " + this.checked);
   },
   created() {
-    console.log("created method called" + this.checked);
+    console.log("created method called " + this.checked);
   },
   mounted() {
     this.$el.dataset.names.split(",").forEach(name => this.names.push(name));
