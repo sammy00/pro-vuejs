@@ -4,9 +4,10 @@
       <h6>{{ message }}</h6>
 
       <my-feature :initial-product="product" @productSubmit="updateProduct">
-        <div class="card-panel orange">
+        <div class="card-panel orange" slot="header">
           <h3 class="center-align">Product Editor</h3>
         </div>
+        <h5 class="orange-text" slot="footer">Check Details Before Submitting</h5>
       </my-feature>
     </div>
   </div>
