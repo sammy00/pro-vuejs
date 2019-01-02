@@ -2,6 +2,12 @@
   <div class="container">
     <div class="card-panel grey darken-1 white-text">
       <h6>{{ message }}</h6>
+      <product-display :product="product">
+        <div
+          class="card-panel black-text"
+          slot-scope="data"
+        >{{data.propname}} is {{ data.propvalue }}</div>
+      </product-display>
 
       <my-feature :initial-product="product" @productSubmit="updateProduct">
         <div class="card-panel orange" slot="header">
@@ -15,6 +21,7 @@
 
 <script>
 import ChildComponent from "./components/Child";
+import ProductDisplay from "./components/ProductDisplay";
 
 export default {
   name: "MyComponent",
@@ -29,7 +36,8 @@ export default {
     };
   },
   components: {
-    MyFeature: ChildComponent
+    MyFeature: ChildComponent,
+    ProductDisplay
   },
   methods: {
     updateProduct(newProduct) {
