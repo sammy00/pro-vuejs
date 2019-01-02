@@ -34,6 +34,20 @@ export default {
   },
   mounted() {
     this.$el.dataset.names.split(",").forEach(name => this.names.push(name));
+  },
+  beforeUpdate() {
+    console.log(
+      `beforeUpdate called. Checked: ${this.checked}` +
+        ` Name: ${this.names[0]} List Elements: ` +
+        this.$el.getElementsByTagName("li").length
+    );
+  },
+  updated() {
+    console.log(
+      `updated called. Checked: ${this.checked}` +
+        ` Name: ${this.names[0]} List Elements: ` +
+        this.$el.getElementsByTagName("li").length
+    );
   }
 };
 </script>
