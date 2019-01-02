@@ -16,7 +16,12 @@
           <td>{{index}}</td>
           <td>{{name}}</td>
           <td>
-            <button class="btn btn-sm bg-primary white-text" @click="handleClick(name)">Select</button>
+            <button
+              class="btn btn-sm bg-primary white-text"
+              @click="handleClick(name)"
+              @mousemove="handleMouseEvent(name, $event)"
+              @mouseleave="handleMouseEvent(name, $event)"
+            >Select</button>
           </td>
         </tr>
       </tbody>
@@ -36,6 +41,14 @@ export default {
   methods: {
     handleClick(name) {
       this.message = `Select: ${name}`;
+    },
+    handleMouseEvent(name, $event) {
+      if ($event.type == "mousemove") {
+        this.message = `Move in ${name} ${this.counter++}`;
+      } else {
+        this.counter = 0;
+        this.message = "Ready";
+      }
     }
   }
 };
