@@ -6,7 +6,11 @@
       @click.capture="handleClick"
     >Outer Element
       <div id="middle-element" class="card-panel grey" @click.stop="handleClick">Middle Element
-        <div id="inner-element" class="card-panel light-blue" @click="handleClick">Inner Element</div>
+        <div
+          id="inner-element"
+          class="card-panel light-blue"
+          @click.once="handleClick"
+        >Inner Element</div>
       </div>
     </div>
   </div>
