@@ -2,6 +2,7 @@
   <div class="card-panel grey darken-1 light-text">
     <div>Counter Value: {{ counter }}</div>
     <button class="btn btn-grey" @click="handleClick">Increment</button>
+    <button class="btn btn-grey" @click="generateError">Generate Error</button>
   </div>
 </template>
 
@@ -9,21 +10,34 @@
 export default {
   data: function() {
     return {
-      counter: 0
+      counter_base: 0,
+      generate_error: false
     };
   },
-  created: function() {
-    console.log("MessageDisplay: created");
-  },
-  beforeDestroy: function() {
+  beforeDestroy() {
     console.log("MessageDisplay: beforeDestroy");
   },
-  destroyed: function() {
+  created() {
+    console.log("MessageDisplay: created");
+  },
+  destroyed() {
     console.log("MessageDisplay: destroyed");
   },
+  computed: {
+    counter() {
+      if (this.generate_error) {
+        throw "My Component Error";
+      } else {
+        return this.counter_base;
+      }
+    }
+  },
   methods: {
+    generateError() {
+      this.generate_error = true;
+    },
     handleClick() {
-      this.counter++;
+      this.counter_base++;
     }
   }
 };
