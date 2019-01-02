@@ -1,30 +1,21 @@
 <template>
   <div class="container">
-    <div
-      id="outer-element"
-      class="teal card-panel white-text"
-      @mousedown="handleClick"
-    >Outer Element
-      <div id="middle-element" class="card-panel grey" @mousedown="handleClick">Middle Element
-        <div
-          id="inner-element"
-          class="card-panel light-blue"
-          @mousedown.right="handleClick"
-        >Inner Element</div>
-      </div>
-    </div>
+    <div class="card-panel teal white-text">{{ message }}</div>
+    <input class="input-field" placeholder="Type here..." type="text" @keydown.ctrl="handleKey">
   </div>
 </template>
 
 <script>
 export default {
   name: "MyComponent",
+  data() {
+    return {
+      message: "Ready"
+    };
+  },
   methods: {
-    handleClick($event) {
-      console.log(
-        `handleClick target: ${$event.target.id}` +
-          ` currentTarget: ${$event.currentTarget.id}`
-      );
+    handleKey($event) {
+      this.message = $event.key;
     }
   }
 };
