@@ -1,24 +1,26 @@
 <template>
   <div class="container">
-    <div class="card-panel teal white-text">
-      <div>Value: {{ dataValue }}</div>
-      <div>Other Value: {{ otherValue || "(Empty)" }}</div>
+    <div class="card-panel light-blue white-text">
+      <div>Name: {{ name }}</div>
+      <div>Password: {{ password }}</div>
+      <div>Details: {{ details }}</div>
     </div>
-
-    <form>
-      <div class="row">
-        <label>
-          <input type="checkbox" v-model="dataValue">
-          <span>Data Value</span>
-        </label>
-      </div>
-      <div class="input-field">
-        <input type="text" v-model="otherValue">
-      </div>
-      <div class="row">
-        <button class="btn grey" type="reset" @click="reset">Reset</button>
-      </div>
-    </form>
+    <div class="blue card-panel white-text">
+      <form>
+        <div class="row">
+          <input type="text" v-model="name">
+          <label for="name">Name</label>
+        </div>
+        <div class="row">
+          <input type="password" v-model="password">
+          <label>Password</label>
+        </div>
+        <div class="row">
+          <textarea v-model="details"/>
+          <label>Details</label>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -27,15 +29,10 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      dataValue: false,
-      otherValue: ""
+      name: "Bob",
+      password: "secret",
+      details: "Has admin access"
     };
-  },
-  methods: {
-    reset() {
-      this.dataValue = false;
-      this.otherValue = "";
-    }
   }
 };
 </script>
