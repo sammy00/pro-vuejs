@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <div class="card-panel white-text" :class="elemClass">
-      <div>Value: {{ elemClass }}</div>
+    <div class="card-panel white-text" :class="dataValue">
+      <div>Value: {{ dataValue }}</div>
     </div>
     <div class="card-panel white-text">
       <form>
         <div class="row">
           <label>
-            <input type="checkbox" v-model="dataValue">
+            <input type="checkbox" v-model="dataValue" true-value="blue" false-value="orange">
             <span>Dark Color</span>
           </label>
         </div>
@@ -24,12 +24,12 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      dataValue: false
+      dataValue: "orange"
     };
   },
-  computed: {
-    elemClass() {
-      return this.dataValue ? "blue" : "orange";
+  methods: {
+    reset() {
+      this.dataValue = "orange";
     }
   }
 };
