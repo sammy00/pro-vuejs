@@ -1,15 +1,14 @@
 <template>
   <div class="container">
     <div class="card-panel light-blue white-text">
-      <div>Name: {{ name }}</div>
+      <div>Amount: {{ amount }}, Amount + 10 = {{ amount + 10 }}</div>
     </div>
     <div class="card-panel white-text">
       <form>
-        <label>Selected Names</label>
-        <select class="browser-default" v-model="name">
-          <option value="all">Everyone</option>
-          <option v-for="n in allNames" v-bind:key="n" v-bind:value="n">Just {{ n}}</option>
-        </select>
+        <div class="row">
+          <label>Amount</label>
+          <input type="number" v-model="amount">
+        </div>
       </form>
     </div>
   </div>
@@ -20,8 +19,7 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      allNames: ["Bob", "Alice", "Joe"],
-      name: "Bob"
+      amount: 100
     };
   }
 };
