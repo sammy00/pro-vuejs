@@ -60,6 +60,11 @@ export default {
       this.names.reverse();
       Vue.nextTick(() => console.log("Callback Invoked"));
     }
+  },
+  watch: {
+    checked(newValue, oldValue) {
+      console.log(`Checked Watch, Old: ${oldValue}, New: ${newValue}`);
+    }
   }
 };
 </script>
