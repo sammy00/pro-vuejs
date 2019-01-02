@@ -3,7 +3,11 @@
     <div class="card-panel grey darken-1 white-text">
       <h6>{{ message }}</h6>
 
-      <my-feature :initial-product="product" @productSubmit="updateProduct"></my-feature>
+      <my-feature :initial-product="product" @productSubmit="updateProduct">
+        <div class="card-panel orange">
+          <h3 class="center-align">Product Editor</h3>
+        </div>
+      </my-feature>
     </div>
   </div>
 </template>
