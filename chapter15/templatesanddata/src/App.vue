@@ -5,12 +5,11 @@
     </div>
     <div class="card-panel white-text">
       <form>
-        <div v-for="n in allNames" v-bind:key="n">
-          <label>
-            <input type="radio" v-model="name" v-bind:value="n">
-            <span>{{ n }}</span>
-          </label>
-        </div>
+        <label>Selected Names</label>
+        <select class="browser-default" v-model="name">
+          <option value="all">Everyone</option>
+          <option v-for="n in allNames" v-bind:key="n" v-bind:value="n">Just {{ n}}</option>
+        </select>
       </form>
     </div>
   </div>
