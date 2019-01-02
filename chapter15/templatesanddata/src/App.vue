@@ -7,7 +7,7 @@
       <form>
         <div class="row">
           <label>Amount</label>
-          <input type="number" v-model="amount">
+          <input type="number" v-model.number="amount">
         </div>
       </form>
     </div>
