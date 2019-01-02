@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="blue card-panel white-text">
-      <h3 class="center-align" v-on:click="name = 'Clicked!'">{{ name }}</h3>
+      <h3 class="center-align" v-on:click="name = $event.type">{{ name }}</h3>
     </div>
   </div>
 </template>
