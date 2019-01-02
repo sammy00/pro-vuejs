@@ -2,6 +2,7 @@
   <div class="card-panel grey darken-1 light-text">
     <div>Counter Value: {{ counter }}</div>
     <button class="btn btn-grey" @click="handleClick">Increment</button>
+    &nbsp;
     <button class="btn btn-grey" @click="generateError">Generate Error</button>
   </div>
 </template>

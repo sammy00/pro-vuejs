@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <div class="card-panel">
+    <div class="card-panel red white-text" v-if="error.occurred">An Error Has Occurred
+      <h4>Error : "{{ error.error }}" ({{ error.source }})</h4>
+    </div>
+    <div class="card-panel" v-else>
       <div class="row">
         <label>
           <input type="checkbox" v-model="checked">
           <span>Checkbox</span>
         </label>
       </div>
-
       Checked Value: {{ checked }}
       <div class="card-panel light-blue" v-if="checked">
         <message-display></message-display>
@@ -28,6 +30,11 @@ export default {
   data() {
     return {
       checked: true,
+      error: {
+        occurred: false,
+        error: "",
+        source: ""
+      },
       names: []
     };
   },
@@ -43,6 +50,12 @@ export default {
   },
   created() {
     console.log("created method called " + this.checked);
+  },
+  errorCaptured(error, component, source) {
+    this.error.occurred = true;
+    this.error.error = error;
+    this.error.source = source;
+    return false;
   },
   mounted() {
     this.$el.dataset.names.split(",").forEach(name => this.names.push(name));
