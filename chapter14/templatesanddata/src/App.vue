@@ -1,7 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="blue card-panel white-text">
-      <h3 class="center-align" v-on:click="handleEvent">{{ name }}</h3>
+      <h3 class="center-align" v-on:click="handleEvent('Soccer Ball', $event)">{{ name }}</h3>
+    </div>
+    <div class="blue card-panel white-text">
+      <h3 class="center-align" v-on:click="handleEvent('Stadium', $event)">{{ name }}</h3>
     </div>
   </div>
 </template>
@@ -15,8 +18,8 @@ export default {
     };
   },
   methods: {
-    handleEvent($event) {
-      this.name = $event.type;
+    handleEvent(name, $event) {
+      this.name = `${name} - ${$event.type}`;
     }
   }
 };
