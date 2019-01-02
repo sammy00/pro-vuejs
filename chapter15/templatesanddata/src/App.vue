@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <div class="card-panel light-blue white-text">
-      <div>Selected Cities: {{ cities }}</div>
+    <div class="card-panel white-text" :class="elemClass">
+      <div>Value: {{ elemClass }}</div>
     </div>
     <div class="card-panel white-text">
       <form>
-        <div v-for="city in cityNames" v-bind:key="city">
+        <div class="row">
           <label>
-            <input type="checkbox" v-model="cities" v-bind:value="city">
-            <span>{{city}}</span>
+            <input type="checkbox" v-model="dataValue">
+            <span>Dark Color</span>
           </label>
         </div>
-        <div>
-          <button @click="reset" class="btn btn-info">Reset</button>
+        <div class="row">
+          <button @click="reset" class="btn">Reset</button>
         </div>
       </form>
     </div>
@@ -24,13 +24,12 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      cityNames: ["London", "New York", "Paris", "Berlin"],
-      cities: []
+      dataValue: false
     };
   },
-  methods: {
-    reset() {
-      this.cities = [];
+  computed: {
+    elemClass() {
+      return this.dataValue ? "blue" : "orange";
     }
   }
 };
