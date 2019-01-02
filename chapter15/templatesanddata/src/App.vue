@@ -8,12 +8,12 @@
     <form>
       <div class="row">
         <label>
-          <input type="checkbox" @change="handleChange" :checked="dataValue">
+          <input type="checkbox" v-model="dataValue">
           <span>Data Value</span>
         </label>
       </div>
       <div class="input-field">
-        <input type="text" @input="handleChange" :value="otherValue">
+        <input type="text" v-model="otherValue">
       </div>
       <div class="row">
         <button class="btn grey" type="reset" @click="reset">Reset</button>
@@ -32,15 +32,9 @@ export default {
     };
   },
   methods: {
-    handleChange($event) {
-      if ($event.target.type == "checkbox") {
-        this.dataValue = $event.target.checked;
-      } else {
-        this.otherValue = $event.target.value;
-      }
-    },
     reset() {
       this.dataValue = false;
+      this.otherValue = "";
     }
   }
 };
