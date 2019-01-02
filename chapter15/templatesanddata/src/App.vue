@@ -2,26 +2,13 @@
   <div class="container">
     <div class="card-panel light-blue white-text">
       <div>Name: {{ name }}</div>
-      <div>Has Admin Access: {{ hasAdminAccess }}</div>
     </div>
     <div class="card-panel white-text">
       <form>
-        <div class="row">
+        <div v-for="n in allNames" v-bind:key="n">
           <label>
-            <input type="radio" v-model="name" value="Bob">
-            <span>Bob</span>
-          </label>
-        </div>
-        <div class="row">
-          <label>
-            <input type="radio" v-model="name" value="Alice">
-            <span>Alice</span>
-          </label>
-        </div>
-        <div class="row">
-          <label>
-            <input type="checkbox" v-model="hasAdminAccess">
-            <span>Has Admin Access?</span>
+            <input type="radio" v-model="name" v-bind:value="n">
+            <span>{{ n }}</span>
           </label>
         </div>
       </form>
@@ -34,8 +21,8 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      name: "Bob",
-      hasAdminAccess: true
+      allNames: ["Bob", "Alice", "Joe"],
+      name: "Bob"
     };
   }
 };
