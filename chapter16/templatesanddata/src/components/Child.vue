@@ -10,10 +10,10 @@
 
 <script>
 export default {
-  props: ["labelText"],
+  props: ["initialValue", "labelText"],
   data: function() {
     return {
-      message: "This is the child component"
+      message: this.initialValue
     };
   }
 };
