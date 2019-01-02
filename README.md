@@ -14,3 +14,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 13. Using the Repeater Directive
 - [x] Chapter 14. Handling Events
 - [x] Chapter 15. Working with Form Elements
+- [x] Chapter 16. Using Components
