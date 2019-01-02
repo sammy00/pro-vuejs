@@ -4,7 +4,7 @@
     <form>
       <div class="row">
         <label>
-          <input type="checkbox" @change="handleChange">
+          <input type="checkbox" @change="handleChange" :checked="dataValue">
           <span>Data Value</span>
         </label>
       </div>
