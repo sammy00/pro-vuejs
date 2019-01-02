@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="card-panel grey darken-1 white-text">
-      <my-feature labelText="Name" initialValue="Kayak"></my-feature>
+      <h6>{{ message }}</h6>
+
+      <my-feature :initial-product="product" @productSubmit="updateProduct"></my-feature>
     </div>
   </div>
 </template>
@@ -13,11 +15,21 @@ export default {
   name: "MyComponent",
   data: function() {
     return {
-      message: "This is the parent component"
+      message: "Ready",
+      product: {
+        name: "Kayak",
+        category: "Watersports",
+        price: 275
+      }
     };
   },
   components: {
     MyFeature: ChildComponent
+  },
+  methods: {
+    updateProduct(newProduct) {
+      this.message = JSON.stringify(newProduct);
+    }
   }
 };
 </script>
