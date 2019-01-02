@@ -24,6 +24,12 @@ export default {
     return {
       checked: true
     };
+  },
+  beforeCreate() {
+    console.log("beforeCreate method called " + this.checked);
+  },
+  created() {
+    console.log("created method called" + this.checked);
   }
 };
 </script>
