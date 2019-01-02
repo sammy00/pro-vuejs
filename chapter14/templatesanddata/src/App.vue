@@ -5,7 +5,7 @@
       class="teal card-panel white-text"
       @click.capture="handleClick"
     >Outer Element
-      <div id="middle-element" class="card-panel grey" @click.self="handleClick">Middle Element
+      <div id="middle-element" class="card-panel grey" @click.stop="handleClick">Middle Element
         <div id="inner-element" class="card-panel light-blue" @click="handleClick">Inner Element</div>
       </div>
     </div>
