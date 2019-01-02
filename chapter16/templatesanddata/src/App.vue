@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <div class="card-panel grey darken-1 white-text">
-      {{ message }}
-      <MyFeature labelText="Name" initialValue="Kayak"></MyFeature>
-      <my-feature label-text="Category" initial-value="Watersports"></my-feature>
+      <div class="row">
+        <input type="text" v-model="labelText">
+      </div>
+      <my-feature :label-text="labelText" initialValue="Kayak"></my-feature>
     </div>
   </div>
 </template>
@@ -15,6 +16,7 @@ export default {
   name: "MyComponent",
   data: function() {
     return {
+      labelText: "Name",
       message: "This is the parent component"
     };
   },
