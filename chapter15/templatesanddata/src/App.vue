@@ -2,22 +2,27 @@
   <div class="container">
     <div class="card-panel light-blue white-text">
       <div>Name: {{ name }}</div>
-      <div>Password: {{ password }}</div>
-      <div>Details: {{ details }}</div>
+      <div>Has Admin Access: {{ hasAdminAccess }}</div>
     </div>
-    <div class="blue card-panel white-text">
+    <div class="card-panel white-text">
       <form>
         <div class="row">
-          <input type="text" v-model="name">
-          <label for="name">Name</label>
+          <label>
+            <input type="radio" v-model="name" value="Bob">
+            <span>Bob</span>
+          </label>
         </div>
         <div class="row">
-          <input type="password" v-model="password">
-          <label>Password</label>
+          <label>
+            <input type="radio" v-model="name" value="Alice">
+            <span>Alice</span>
+          </label>
         </div>
         <div class="row">
-          <textarea v-model="details"/>
-          <label>Details</label>
+          <label>
+            <input type="checkbox" v-model="hasAdminAccess">
+            <span>Has Admin Access?</span>
+          </label>
         </div>
       </form>
     </div>
@@ -30,8 +35,7 @@ export default {
   data() {
     return {
       name: "Bob",
-      password: "secret",
-      details: "Has admin access"
+      hasAdminAccess: true
     };
   }
 };
