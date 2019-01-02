@@ -13,6 +13,9 @@
           <li v-for="name in names" v-bind:key="name">{{ name }}</li>
         </ul>
       </div>
+      <div class="row">
+        <button class="btn" @click="doChange">Change</button>
+      </div>
     </div>
   </div>
 </template>
@@ -29,12 +32,6 @@ export default {
   beforeCreate() {
     console.log("beforeCreate method called " + this.checked);
   },
-  created() {
-    console.log("created method called " + this.checked);
-  },
-  mounted() {
-    this.$el.dataset.names.split(",").forEach(name => this.names.push(name));
-  },
   beforeUpdate() {
     console.log(
       `beforeUpdate called. Checked: ${this.checked}` +
@@ -42,12 +39,24 @@ export default {
         this.$el.getElementsByTagName("li").length
     );
   },
+  created() {
+    console.log("created method called " + this.checked);
+  },
+  mounted() {
+    this.$el.dataset.names.split(",").forEach(name => this.names.push(name));
+  },
   updated() {
     console.log(
       `updated called. Checked: ${this.checked}` +
         ` Name: ${this.names[0]} List Elements: ` +
         this.$el.getElementsByTagName("li").length
     );
+  },
+  methods: {
+    doChange() {
+      this.checked = !this.checked;
+      this.names.reverse();
+    }
   }
 };
 </script>
