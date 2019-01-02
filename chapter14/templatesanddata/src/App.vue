@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <div id="outer-element" class="teal card-panel white-text" @click="handleClick">Outer Element
-      <div id="middle-element" class="card-panel grey" @click="handleClick">Middle Element
+    <div
+      id="outer-element"
+      class="teal card-panel white-text"
+      @click.capture="handleClick"
+    >Outer Element
+      <div id="middle-element" class="card-panel grey" @click.capture="handleClick">Middle Element
         <div id="inner-element" class="card-panel light-blue" @click="handleClick">Inner Element</div>
       </div>
     </div>
