@@ -2,6 +2,7 @@
   <div class="container">
     <div class="card-panel blue">Root Component
       <ChildComponent></ChildComponent>
+      <child-component></child-component>
     </div>
   </div>
 </template>
