@@ -38,8 +38,9 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      name: "",
       category: "",
+      hasSubmitted: false,
+      name: "",
       price: 0,
       validationErrors: {}
     };
@@ -51,6 +52,14 @@ export default {
   },
 
   methods: {
+    handleSubmit() {
+      this.hasSubmitted = true;
+      if (this.validateAll()) {
+        console.log(
+          `FORM SUBMITTED: ${this.name} ${this.category} ` + ` ${this.price}`
+        );
+      }
+    },
     validate(propertyName, value) {
       let errors = [];
       Object(validation)[propertyName].forEach(v => {
@@ -70,12 +79,21 @@ export default {
       this.validate("price", this.price);
       return this.errors;
     },
-    handleSubmit() {
-      if (this.validateAll()) {
-        console.log(
-          `FORM SUBMITTED: ${this.name} ${this.category} ` + ` ${this.price}`
-        );
+    validateWatch(propertyName, value) {
+      if (this.hasSubmitted) {
+        this.validate(propertyName, value);
       }
+    }
+  },
+  watch: {
+    name(value) {
+      this.validateWatch("name", value);
+    },
+    category(value) {
+      this.validateWatch("category", value);
+    },
+    price(value) {
+      this.validateWatch("price", value);
     }
   }
 };
