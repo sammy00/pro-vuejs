@@ -7,8 +7,30 @@
       <form>
         <div class="row">
           <label>
-            <input type="checkbox" v-model="dataValue" true-value="blue" false-value="orange">
+            <input
+              type="checkbox"
+              v-model="dataValue"
+              :true-value="darkColor"
+              :false-value="lightColor"
+            >
             <span>Dark Color</span>
+          </label>
+        </div>
+        <div class="row">
+          <label>Color</label>
+          <select v-model="dataValue">
+            <option :value="darkColor">Dark Color</option>
+            <option :value="lightColor">Light Color</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>
+            <input type="radio" v-model="dataValue" :value="darkColor">
+            <span>Dark Color</span>
+          </label>
+          <label>
+            <input type="radio" v-model="dataValue" :value="lightColor">
+            <span>Light Color</span>
           </label>
         </div>
         <div class="row">
@@ -24,6 +46,8 @@ export default {
   name: "MyComponent",
   data() {
     return {
+      darkColor: "blue",
+      lightColor: "orange",
       dataValue: "orange"
     };
   },
