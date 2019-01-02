@@ -7,14 +7,10 @@
           <span>Checkbox</span>
         </label>
       </div>
+
       Checked Value: {{ checked }}
-      <div class="card-panel light-blue">Names:
-        <ul>
-          <li v-for="name in names" v-bind:key="name">{{ name }}</li>
-        </ul>
-      </div>
-      <div class="row">
-        <button class="btn" @click="doChange">Change</button>
+      <div class="card-panel light-blue" v-if="checked">
+        <message-display></message-display>
       </div>
     </div>
   </div>
@@ -23,8 +19,12 @@
 <script>
 import Vue from "vue";
 
+import MessageDisplay from "./components/MessageDisplay";
+
 export default {
   name: "app",
+  components: { MessageDisplay },
+
   data() {
     return {
       checked: true,
