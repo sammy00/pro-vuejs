@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="card-panel blue">Root Component
-      <ChildComponent></ChildComponent>
-      <child-component></child-component>
+    <div class="card-panel grey darken-1">Root Component
+      <MyFeature></MyFeature>
+      <my-feature></my-feature>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@ import ChildComponent from "./components/Child";
 export default {
   name: "MyComponent",
   components: {
-    ChildComponent
+    MyFeature: ChildComponent
   }
 };
 </script>
