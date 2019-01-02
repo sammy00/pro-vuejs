@@ -18,9 +18,8 @@
           <td>
             <button
               class="btn btn-sm bg-primary white-text"
-              @click="handleClick(name)"
-              @mousemove="handleMouseEvent(name, $event)"
-              @mouseleave="handleMouseEvent(name, $event)"
+              v-on="buttonEvents"
+              :data-name="name"
             >Select</button>
           </td>
         </tr>
@@ -34,15 +33,24 @@ export default {
   name: "MyComponent",
   data: function() {
     return {
+      buttonEvents: {
+        click: this.handleClick,
+        mousemove: this.handleMouseEvent,
+        mouseleave: this.handleMouseEvent
+      },
+      counter: 0,
       message: "Ready",
       names: ["Kayak", "Lifejacket", "Soccer Ball", "Stadium"]
     };
   },
   methods: {
-    handleClick(name) {
+    handleClick($event) {
+      let name = $event.target.dataset.name;
       this.message = `Select: ${name}`;
     },
-    handleMouseEvent(name, $event) {
+    handleMouseEvent($event) {
+      let name = $event.target.dataset.name;
+
       if ($event.type == "mousemove") {
         this.message = `Move in ${name} ${this.counter++}`;
       } else {
