@@ -3,13 +3,13 @@
     <div
       id="outer-element"
       class="teal card-panel white-text"
-      @click.capture="handleClick"
+      @mousedown="handleClick"
     >Outer Element
-      <div id="middle-element" class="card-panel grey" @click.stop="handleClick">Middle Element
+      <div id="middle-element" class="card-panel grey" @mousedown="handleClick">Middle Element
         <div
           id="inner-element"
           class="card-panel light-blue"
-          @click.once="handleClick"
+          @mousedown.right="handleClick"
         >Inner Element</div>
       </div>
     </div>
