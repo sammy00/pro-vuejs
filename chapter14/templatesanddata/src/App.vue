@@ -1,11 +1,26 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <div class="blue card-panel white-text">
-      <h3 class="center-align" v-on:click="handleEvent('Soccer Ball', $event)">{{ name }}</h3>
+      <h3 class="center-align">{{ message }}</h3>
     </div>
-    <div class="blue card-panel white-text">
-      <h3 class="center-align" v-on:click="handleEvent('Stadium', $event)">{{ name }}</h3>
-    </div>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(name, index) in names" v-bind:key="name">
+          <td>{{index}}</td>
+          <td>{{name}}</td>
+          <td>
+            <button class="btn btn-sm bg-primary white-text" @click="handleClick(name)">Select</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -14,12 +29,13 @@ export default {
   name: "MyComponent",
   data: function() {
     return {
-      name: "Lifejacket"
+      message: "Ready",
+      names: ["Kayak", "Lifejacket", "Soccer Ball", "Stadium"]
     };
   },
   methods: {
-    handleEvent(name, $event) {
-      this.name = `${name} - ${$event.type}`;
+    handleClick(name) {
+      this.message = `Select: ${name}`;
     }
   }
 };
