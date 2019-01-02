@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="card-panel light-blue white-text">
-      <div>Amount: {{ amount }}, Amount + 10 = {{ amount + 10 }}</div>
+      <div>Name: **{{name}}**</div>
     </div>
     <div class="card-panel white-text">
       <form>
         <div class="row">
-          <label>Amount</label>
-          <input type="number" v-model.number.lazy="amount">
+          <label>Name</label>
+          <input type="text" v-model.trim="name">
         </div>
       </form>
     </div>
@@ -19,7 +19,7 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      amount: 100
+      name: "Bob"
     };
   }
 };
