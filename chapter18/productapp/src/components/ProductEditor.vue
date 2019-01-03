@@ -25,6 +25,7 @@ export default {
     };
   },
   components: { EditorField },
+  inject: ["eventBus"],
   methods: {
     startEdit(product) {
       this.editing = true;
@@ -43,14 +44,18 @@ export default {
       };
     },
     save() {
-      // TODO - process edited or created product
-      console.log(`Edit Complete: ${JSON.stringify(this.product)}`);
+      this.eventBus.$emit("complete", this.product);
       this.startCreate();
+      console.log(`Edit Complete: ${JSON.stringify(this.product)}`);
     },
     cancel() {
       this.product = {};
       this.editing = false;
     }
+  },
+  created() {
+    this.eventBus.$on("create", this.startCreate);
+    this.eventBus.$on("edit", this.startEdit);
   }
 };
 </script>
