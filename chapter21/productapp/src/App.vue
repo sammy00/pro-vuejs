@@ -24,6 +24,9 @@ import ProductEditor from "./components/ProductEditor";
 
 export default {
   name: "App",
-  components: { ErrorDisplay, ProductDisplay, ProductEditor }
+  components: { ErrorDisplay, ProductDisplay, ProductEditor },
+  created() {
+    this.$store.dispatch("getProductsAction");
+  }
 };
 </script>
