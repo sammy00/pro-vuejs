@@ -32,25 +32,24 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from "vuex";
+
 export default {
   computed: {
-    products() {
-      return this.$store.state.products;
-    }
+    ...mapState(["products"])
   },
   methods: {
-    createNew() {
-      this.$store.commit("selectProduct");
-    },
-    deleteProduct(product) {
-      this.$store.dispatch("deleteProductAction", product);
-    },
-    editProduct(product) {
-      this.$store.commit("selectProduct", product);
-    }
+    ...mapMutations({
+      editProduct: "selectProduct",
+      createNew: "selectProduct"
+    }),
+    ...mapActions({
+      getProducts: "getProductsAction",
+      deleteProduct: "deleteProductAction"
+    })
   },
   created() {
-    this.$store.dispatch("getProductsAction");
+    this.getProducts();
   }
 };
 </script>
