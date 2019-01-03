@@ -40,7 +40,11 @@ import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["tableClass", "editClass", "deleteClass"]),
+    ...mapGetters({
+      tableClass: "prefs/tableClass",
+      editClass: "prefs/editClass",
+      deleteClass: "prefs/deleteClass"
+    }),
     ...mapState(["products"]),
     ...mapState({
       useStripedTable: state => state.prefs.stripedTable
@@ -52,10 +56,11 @@ export default {
       deleteProduct: "deleteProductAction"
     }),
     ...mapMutations({
+      createNew: "selectProduct",
       editProduct: "selectProduct",
-      createNew: "selectProduct"
-    }),
-    ...mapMutations(["setEditButtonColor", "setDeleteButtonColor"])
+      setEditButtonColor: "prefs/setEditButtonColor",
+      setDeleteButtonColor: "prefs/setDeleteButtonColor"
+    })
   },
   created() {
     this.getProducts();
