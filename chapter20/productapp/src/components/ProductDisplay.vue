@@ -33,15 +33,17 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      products: []
-    };
+  computed: {
+    products() {
+      return this.$store.state.products;
+    }
   },
   inject: ["eventBus", "restDataSource"],
   methods: {
     createNew() {},
-    deleteProduct(product) {},
+    deleteProduct(product) {
+      this.$store.commit("deleteProduct", product);
+    },
     editProduct(product) {}
   }
 };
