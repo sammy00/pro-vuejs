@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="row">
-        <error-display/>
-      </div>
+      <!--
       <div class="row">
         <label>
           <input
@@ -24,7 +22,7 @@
           <span>Editor</span>
         </label>
       </div>
-
+      -->
       <div class="row">
         <!-- eslint-disable-next-line -->
         <component :is="selectedComponent"></component>
@@ -38,16 +36,16 @@ import ErrorDisplay from "./components/ErrorDisplay";
 import ProductDisplay from "./components/ProductDisplay";
 import ProductEditor from "./components/ProductEditor";
 
+import { mapState } from "vuex";
+
 export default {
   name: "App",
   // eslint-disable-next-line
   components: { ErrorDisplay, ProductDisplay, ProductEditor },
-  data: function() {
-    return {
-      selected: "table"
-    };
-  },
   computed: {
+    ...mapState({
+      selected: state => state.nav.selected
+    }),
     selectedComponent() {
       return this.selected == "table" ? ProductDisplay : ProductEditor;
     }
