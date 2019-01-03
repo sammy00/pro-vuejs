@@ -32,6 +32,9 @@
 <script>
 import Vue from "vue";
 
+import Axios from "axios";
+const baseUrl = "http://localhost:3500/products/";
+
 export default {
   data: function() {
     return {
@@ -50,6 +53,9 @@ export default {
       this.products.splice(0);
       this.products.push(...newProducts);
     }
+  },
+  created() {
+    Axios.get(baseUrl);
   }
 };
 </script>
