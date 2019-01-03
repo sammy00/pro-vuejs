@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     save() {
-      this.$store.commit("saveProduct", this.product);
+      this.$store.dispatch("saveProductAction", this.product);
       this.product = {};
     },
     cancel() {}
