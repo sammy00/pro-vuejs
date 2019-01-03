@@ -5,7 +5,7 @@
         <div class="col m8">
           <product-display></product-display>
         </div>
-        <div class="col m4">
+        <div class="col m3 offset-m1">
           <product-editor></product-editor>
         </div>
       </div>

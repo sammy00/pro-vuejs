@@ -1,6 +1,6 @@
 <template>
-  <div class="input-field">
-    <input v-model.number="value" class="form-control">
+  <div class="row">
+    <input v-model.number="value" :class="[colors.bg, colors.text]">
     <label for="value">{{label}}</label>
   </div>
 </template>
@@ -12,6 +12,7 @@ export default {
     return {
       value: ""
     };
-  }
+  },
+  inject: ["colors"]
 };
 </script>
