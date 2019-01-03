@@ -19,6 +19,14 @@ import ProductEditor from "./components/ProductEditor";
 
 export default {
   name: "App",
-  components: { ProductDisplay, ProductEditor }
+  components: { ProductDisplay, ProductEditor },
+  provide() {
+    return {
+      colors: {
+        bg: "grey",
+        text: "white-text"
+      }
+    };
+  }
 };
 </script>
