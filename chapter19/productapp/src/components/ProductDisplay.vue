@@ -45,6 +45,10 @@ export default {
     },
     editProduct(product) {
       this.eventBus.$emit("edit", product);
+    },
+    processProducts(newProducts) {
+      this.products.splice(0);
+      this.products.push(...newProducts);
     }
   }
 };
