@@ -38,13 +38,16 @@ export default {
       return this.$store.state.products;
     }
   },
-  inject: ["eventBus", "restDataSource"],
   methods: {
-    createNew() {},
+    createNew() {
+      this.$store.commit("selectProduct");
+    },
     deleteProduct(product) {
       this.$store.dispatch("deleteProductAction", product);
     },
-    editProduct(product) {}
+    editProduct(product) {
+      this.$store.commit("selectProduct", product);
+    }
   },
   created() {
     this.$store.dispatch("getProductsAction");
