@@ -16,6 +16,8 @@
           <td>{{ p.price }}</td>
           <td>
             <button class="btn btn-small" @click="editProduct(p)">Edit</button>
+            &nbsp;
+            <button class="btn btn-small" @click="deleteProduct(p)">Delete</button>
           </td>
         </tr>
         <tr v-if="products.length == 0">
@@ -40,6 +42,21 @@ export default {
   },
   inject: ["eventBus", "restDataSource"],
   methods: {
+    async deleteProduct(product) {
+      await this.restDataSource.deleteProduct(product);
+      let index = this.products.findIndex(p => p.id == product.id);
+      this.products.splice(index, 1);
+    },
+    async processComplete(product) {
+      let index = this.products.findIndex(p => p.id == product.id);
+      if (index == -1) {
+        await this.restDataSource.saveProduct(product);
+        this.products.push(product);
+      } else {
+        await this.restDataSource.updateProduct(product);
+        Vue.set(this.products, index, product);
+      }
+    },
     createNew() {
       this.eventBus.$emit("create");
     },
@@ -53,6 +70,7 @@ export default {
   },
   async created() {
     this.processProducts(await this.restDataSource.getProducts());
+    this.eventBus.$on("complete", this.processComplete);
   }
 };
 </script>
