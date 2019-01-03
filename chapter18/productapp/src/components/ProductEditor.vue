@@ -51,6 +51,14 @@ export default {
       this.product = {};
       this.editing = false;
     }
+  },
+  provide() {
+    return {
+      colors: {
+        bg: "grey lighten-2",
+        text: "red-text"
+      }
+    };
   }
 };
 </script>
