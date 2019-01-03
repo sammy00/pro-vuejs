@@ -55,10 +55,7 @@ export default {
     }
   },
   created() {
-    Axios.get(baseUrl).then(resp => {
-      console.log(`HTTP Response: ${resp.status}, ${resp.statusText}`);
-      console.log(`Response Data: ${resp.data.length} items`);
-    });
+    Axios.get(baseUrl).then(resp => this.processProducts(resp.data));
   }
 };
 </script>
