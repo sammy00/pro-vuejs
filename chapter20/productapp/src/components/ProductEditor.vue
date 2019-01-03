@@ -17,7 +17,7 @@
       <label>Price</label>
     </div>
 
-    <div>
+    <div class="row">
       <button class="btn" @click="save">{{ editing ? "Save" : "Create" }}</button>
       &nbsp;
       <button class="btn grey" @click="cancel">Cancel</button>
@@ -33,33 +33,9 @@ export default {
       product: {}
     };
   },
-  inject: ["eventBus"],
   methods: {
-    startEdit(product) {
-      this.editing = true;
-      this.product = {
-        category: product.category,
-        id: product.id,
-        name: product.name,
-        price: product.price
-      };
-    },
-    startCreate() {
-      this.editing = false;
-      this.product = {};
-    },
-    save() {
-      this.eventBus.$emit("complete", this.product);
-      this.startCreate();
-    },
-    cancel() {
-      this.product = {};
-      this.editing = false;
-    }
-  },
-  created() {
-    this.eventBus.$on("create", this.startCreate);
-    this.eventBus.$on("edit", this.startEdit);
+    save() {},
+    cancel() {}
   }
 };
 </script>
