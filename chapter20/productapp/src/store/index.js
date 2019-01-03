@@ -1,31 +1,36 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import Axios from 'axios'
+
 Vue.use(Vuex)
+
+const baseUrl = 'http://localhost:3500/products/'
 
 export default new Vuex.Store({
   strict: true,
   state: {
-    products: [
-      {
-        id: 1,
-        name: 'Product #1',
-        category: 'Test',
-        price: 100,
-      },
-      {
-        id: 2,
-        name: 'Product #2',
-        category: 'Test',
-        price: 150,
-      },
-      {
-        id: 3,
-        name: 'Product #3',
-        category: 'Test',
-        price: 200,
-      },
-    ],
+    products: [],
+  },
+  actions: {
+    async getProductsAction(context) {
+      (await Axios.get(baseUrl)).data.forEach((p) =>
+        context.commit('saveProduct', p)
+      )
+    },
+    async saveProductAction(context, product) {
+      let index = context.state.products.findIndex((p) => p.id == product.id)
+      if (index == -1) {
+        await Axios.post(baseUrl, product)
+      } else {
+        await Axios.put(`${baseUrl}${product.id}`, product)
+      }
+      context.commit('saveProduct', product)
+    },
+    async deleteProductAction(context, product) {
+      await Axios.delete(`${baseUrl}${product.id}`)
+      context.commit('deleteProduct', product)
+    },
   },
   getters: {
     orderedProducts(state) {
