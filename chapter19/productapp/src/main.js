@@ -8,10 +8,15 @@ Vue.config.productionTip = false
 
 new Vue({
   render: (h) => h(App),
-  provide() {
+  data() {
     return {
       eventBus: new Vue(),
-      restDataSource: new RestDataSource(),
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus,
+      restDataSource: new RestDataSource(this.eventBus),
     }
   },
 }).$mount('#app')
