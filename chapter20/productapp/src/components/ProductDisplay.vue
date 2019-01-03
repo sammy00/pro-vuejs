@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <table class="striped">
+    <table class="striped" :class="tableClass">
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -15,9 +15,13 @@
           <td>{{ p.category }}</td>
           <td>{{ p.price }}</td>
           <td>
-            <button class="btn btn-small" @click="editProduct(p)">Edit</button>
+            <button class="btn btn-small" :class="editClass" @click="editProduct(p)">Edit</button>
             &nbsp;
-            <button class="btn btn-small" @click="deleteProduct(p)">Delete</button>
+            <button
+              class="btn btn-small"
+              :class="deleteClass"
+              @click="deleteProduct(p)"
+            >Delete</button>
           </td>
         </tr>
         <tr v-if="products.length == 0">
@@ -32,24 +36,28 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from "vuex";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   computed: {
+    ...mapGetters(["tableClass", "editClass", "deleteClass"]),
     ...mapState(["products"])
   },
   methods: {
+    ...mapActions({
+      getProducts: "getProductsAction",
+      deleteProduct: "deleteProductAction"
+    }),
     ...mapMutations({
       editProduct: "selectProduct",
       createNew: "selectProduct"
     }),
-    ...mapActions({
-      getProducts: "getProductsAction",
-      deleteProduct: "deleteProductAction"
-    })
+    ...mapMutations(["setEditButtonColor", "setDeleteButtonColor"])
   },
   created() {
     this.getProducts();
+    this.setEditButtonColor(false);
+    this.setDeleteButtonColor(false);
   }
 };
 </script>
