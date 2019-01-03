@@ -6,12 +6,8 @@
       </div>
 
       <div class="row">
-        <div class="col m8">
-          <product-display></product-display>
-        </div>
-        <div class="col m3 offset-m1">
-          <product-editor></product-editor>
-        </div>
+        <!-- eslint-disable-next-line -->
+        <component is="ProductDisplay"></component>
       </div>
     </div>
   </div>
@@ -24,6 +20,7 @@ import ProductEditor from "./components/ProductEditor";
 
 export default {
   name: "App",
+  // eslint-disable-next-line
   components: { ErrorDisplay, ProductDisplay, ProductEditor },
   created() {
     this.$store.dispatch("getProductsAction");
