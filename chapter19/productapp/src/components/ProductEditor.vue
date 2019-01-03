@@ -33,7 +33,6 @@ export default {
       product: {}
     };
   },
-  components: { EditorField },
   inject: ["eventBus"],
   methods: {
     startEdit(product) {

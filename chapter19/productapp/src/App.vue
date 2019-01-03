@@ -2,9 +2,6 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <button class="btn" @click="toggleColors">Toggle Colors</button>
-      </div>
-      <div class="row">
         <div class="col m8">
           <product-display></product-display>
         </div>
@@ -22,31 +19,6 @@ import ProductEditor from "./components/ProductEditor";
 
 export default {
   name: "App",
-  data() {
-    return {
-      reactiveColors: {
-        bg: "grey",
-        text: "white-text"
-      }
-    };
-  },
-  components: { ProductDisplay, ProductEditor },
-  methods: {
-    toggleColors() {
-      if (this.reactiveColors.bg == "grey") {
-        this.reactiveColors.bg = "grey lighten-1";
-        this.reactiveColors.text = "red-text";
-      } else {
-        this.reactiveColors.bg = "grey";
-        this.reactiveColors.text = "white-text";
-      }
-    }
-  },
-  provide() {
-    return {
-      colors: this.reactiveColors,
-      labelFormatter: value => `Enter ${value}:`
-    };
-  }
+  components: { ProductDisplay, ProductEditor }
 };
 </script>
