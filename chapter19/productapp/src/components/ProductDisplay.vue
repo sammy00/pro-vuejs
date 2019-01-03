@@ -55,7 +55,10 @@ export default {
     }
   },
   created() {
-    Axios.get(baseUrl);
+    Axios.get(baseUrl).then(resp => {
+      console.log(`HTTP Response: ${resp.status}, ${resp.statusText}`);
+      console.log(`Response Data: ${resp.data.length} items`);
+    });
   }
 };
 </script>
