@@ -15,5 +15,3 @@ export default {
   }
 };
 </script>
-
-<!--Listing 18-7. The Contents of the EditorField.vue File-->
