@@ -1,30 +1,36 @@
 <template>
   <div>
-    <editor-field label="ID" editorFor="id"/>
-    <editor-field label="Name" editorFor="name"/>
-    <editor-field label="Price" editorFor="price"/>
+    <div class="row">
+      <input v-model="product.id">
+      <label>ID</label>
+    </div>
+    <div class="row">
+      <input v-model="product.name">
+      <label>Name</label>
+    </div>
+    <div class="row">
+      <input v-model="product.category">
+      <label>Category</label>
+    </div>
+    <div class="row">
+      <input v-model="product.price">
+      <label>Price</label>
+    </div>
 
     <div>
       <button class="btn" @click="save">{{ editing ? "Save" : "Create" }}</button>
+      &nbsp;
       <button class="btn grey" @click="cancel">Cancel</button>
     </div>
   </div>
 </template>
 
 <script>
-import EditorField from "./EditorField";
-import Vue from "vue";
-
 export default {
-  data: function() {
+  data() {
     return {
       editing: false,
-      product: {
-        id: 0,
-        name: "",
-        price: 0
-      },
-      localBus: new Vue()
+      product: {}
     };
   },
   components: { EditorField },
@@ -33,6 +39,7 @@ export default {
     startEdit(product) {
       this.editing = true;
       this.product = {
+        category: product.category,
         id: product.id,
         name: product.name,
         price: product.price
@@ -40,16 +47,11 @@ export default {
     },
     startCreate() {
       this.editing = false;
-      this.product = {
-        id: 0,
-        name: "",
-        price: 0
-      };
+      this.product = {};
     },
     save() {
       this.eventBus.$emit("complete", this.product);
       this.startCreate();
-      console.log(`Edit Complete: ${JSON.stringify(this.product)}`);
     },
     cancel() {
       this.product = {};
@@ -59,21 +61,6 @@ export default {
   created() {
     this.eventBus.$on("create", this.startCreate);
     this.eventBus.$on("edit", this.startEdit);
-
-    this.localBus.$on(
-      "change",
-      change => (this.product[change.name] = change.value)
-    );
-  },
-  provide() {
-    return {
-      editingEventBus: this.localBus
-    };
-  },
-  watch: {
-    product(newValue, oldValue) {
-      this.localBus.$emit("target", newValue);
-    }
   }
 };
 </script>
