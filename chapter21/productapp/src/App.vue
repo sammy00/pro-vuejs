@@ -16,10 +16,15 @@
 
 <script>
 import ErrorDisplay from "./components/ErrorDisplay";
+import LoadingMessage from "./components/LoadingMessage";
 import ProductDisplay from "./components/ProductDisplay";
 import ProductEditor from "./components/ProductEditor";
 
-const DataSummary = () => import("./components/DataSummary");
+const DataSummary = () => ({
+  component: import("./components/DataSummary"),
+  loading: LoadingMessage,
+  delay: 100
+});
 
 import { mapMutations, mapState } from "vuex";
 
