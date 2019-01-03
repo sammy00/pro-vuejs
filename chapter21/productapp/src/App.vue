@@ -4,7 +4,7 @@
       <div class="row center">
         <button class="btn" @click="selectComponent('table')">Standard Features</button>
         &nbsp;
-        <button class="btn" @click="selectComponent('summary')">Advanced</button>
+        <button class="btn green" @click="selectComponent('summary')">Advanced</button>
       </div>
       <div class="row">
         <!-- eslint-disable-next-line -->
