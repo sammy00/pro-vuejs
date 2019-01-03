@@ -32,16 +32,13 @@
 <script>
 import Vue from "vue";
 
-import Axios from "axios";
-const baseUrl = "http://localhost:3500/products/";
-
 export default {
   data: function() {
     return {
       products: []
     };
   },
-  inject: ["eventBus"],
+  inject: ["eventBus", "restDataSource"],
   methods: {
     createNew() {
       this.eventBus.$emit("create");
@@ -55,8 +52,7 @@ export default {
     }
   },
   async created() {
-    let data = (await Axios.get(baseUrl)).data;
-    this.processProducts(data);
+    this.processProducts(await this.restDataSource.getProducts());
   }
 };
 </script>
