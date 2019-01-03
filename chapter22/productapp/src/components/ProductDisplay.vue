@@ -56,21 +56,19 @@ export default {
     }),
     ...mapMutations({
       selectProduct: "selectProduct",
-      selectComponent: "nav/selectComponent",
       setEditButtonColor: "prefs/setEditButtonColor",
       setDeleteButtonColor: "prefs/setDeleteButtonColor"
     }),
     createNew() {
       this.selectProduct();
-      this.selectComponent("editor");
+      this.$router.push("/edit");
     },
     editProduct(product) {
       this.selectProduct(product);
-      this.selectComponent("editor");
+      this.$router.push("/edit");
     }
   },
   created() {
-    //this.getProducts();
     this.setEditButtonColor(false);
     this.setDeleteButtonColor(false);
   }
