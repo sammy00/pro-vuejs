@@ -38,9 +38,12 @@ export default {
   methods: {
     cancel() {
       this.$store.commit("selectProduct");
+      this.$store.commit("nav/selectComponent", "table");
     },
-    save() {
+    async save() {
       this.$store.dispatch("saveProductAction", this.product);
+      this.$store.commit("nav/selectComponent", "table");
+
       this.product = {};
     },
     selectProduct(selectedProduct) {
