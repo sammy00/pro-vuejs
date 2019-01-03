@@ -35,16 +35,19 @@
 export default {
   computed: {
     products() {
-      return this.$store.getters.filteredProducts(175);
+      return this.$store.state.products;
     }
   },
   inject: ["eventBus", "restDataSource"],
   methods: {
     createNew() {},
     deleteProduct(product) {
-      this.$store.commit("deleteProduct", product);
+      this.$store.dispatch("deleteProductAction", product);
     },
     editProduct(product) {}
+  },
+  created() {
+    this.$store.dispatch("getProductsAction");
   }
 };
 </script>
