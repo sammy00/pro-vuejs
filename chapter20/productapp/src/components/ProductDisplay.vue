@@ -35,7 +35,7 @@
 export default {
   computed: {
     products() {
-      return this.$store.getters.filteredProducts;
+      return this.$store.getters.filteredProducts(175);
     }
   },
   inject: ["eventBus", "restDataSource"],
