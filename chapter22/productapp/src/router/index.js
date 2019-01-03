@@ -11,5 +11,6 @@ export default new VueRouter({
   routes: [
     { path: '/', component: ProductDisplay },
     { path: '/edit', component: ProductEditor },
+    { path: '*', redirect: '/' },
   ],
 })
