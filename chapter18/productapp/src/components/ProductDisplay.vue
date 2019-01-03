@@ -42,9 +42,14 @@ export default {
       return `$${value.toFixed(2)}`;
     }
   },
+  inject: ["eventBus"],
   methods: {
-    createNew() {},
-    editProduct(product) {}
+    createNew() {
+      this.eventBus.$emit("create");
+    },
+    editProduct(product) {
+      this.eventBus.$emit("edit", product);
+    }
   }
 };
 </script>
