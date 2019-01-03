@@ -1,5 +1,5 @@
 <template>
-  <div v-if="error" class="red white-text center">
+  <div v-if="error" class="card-panel red white-text center">
     <h3>An Error Has Occurred</h3>
     <h6>{{ message }}</h6>
     <a href="/" class="btn grey">OK</a>
