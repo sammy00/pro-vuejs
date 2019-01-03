@@ -18,3 +18,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 17. Understanding the Component Lifecycle
 - [x] Chapter 18. Loosely Coupled Components
 - [x] Chapter 19. Using RESTful Web Services
+- [x] Chapter 20. Using a Data Store

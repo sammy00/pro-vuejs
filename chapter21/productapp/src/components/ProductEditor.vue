@@ -54,6 +54,9 @@ export default {
       }
     }
   },
+  beforeDestroy() {
+    unwatcher();
+  },
   created() {
     unwatcher = this.$store.watch(
       state => state.selectedProduct,
