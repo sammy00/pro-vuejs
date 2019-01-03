@@ -8,18 +8,18 @@
         <th></th>
       </tr>
       <tbody>
-        <tr v-for="p in products" v-bind:key="p.id">
+        <tr v-for="p in products" :key="p.id">
           <td>{{ p.id }}</td>
           <td>{{ p.name }}</td>
           <td>{{ p.price | currency }}</td>
           <td>
-            <button class="btn btn-sm btn-primary" v-on:click="editProduct(p)">Edit</button>
+            <button class="btn btn-small" @click="editProduct(p)">Edit</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div class="row">
-      <button class="btn btn-primary center-align" v-on:click="createNew">Create New</button>
+      <button class="btn center-align" @click="createNew">Create New</button>
     </div>
   </div>
 </template>
