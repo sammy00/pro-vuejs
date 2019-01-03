@@ -11,6 +11,7 @@ export default new Vuex.Store({
   strict: true,
   state: {
     products: [],
+    selectedProduct: null,
   },
   actions: {
     async getProductsAction(context) {
@@ -41,6 +42,10 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    deleteProduct(currentState, product) {
+      let index = currentState.products.findIndex((p) => p.id == product.id)
+      currentState.products.splice(index, 1)
+    },
     saveProduct(currentState, product) {
       let index = currentState.products.findIndex((p) => p.id == product.id)
       if (index == -1) {
@@ -49,9 +54,8 @@ export default new Vuex.Store({
         Vue.set(currentState.products, index, product)
       }
     },
-    deleteProduct(currentState, product) {
-      let index = currentState.products.findIndex((p) => p.id == product.id)
-      currentState.products.splice(index, 1)
+    selectProduct(currentState, product) {
+      currentState.selectedProduct = product
     },
   },
 })
