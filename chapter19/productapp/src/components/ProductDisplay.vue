@@ -54,8 +54,9 @@ export default {
       this.products.push(...newProducts);
     }
   },
-  created() {
-    Axios.get(baseUrl).then(resp => this.processProducts(resp.data));
+  async created() {
+    let data = (await Axios.get(baseUrl)).data;
+    this.processProducts(data);
   }
 };
 </script>
