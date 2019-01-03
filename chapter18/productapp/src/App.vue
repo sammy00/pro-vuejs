@@ -44,7 +44,8 @@ export default {
   },
   provide() {
     return {
-      colors: this.reactiveColors
+      colors: this.reactiveColors,
+      labelFormatter: value => `Enter ${value}:`
     };
   }
 };
