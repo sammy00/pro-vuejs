@@ -6,14 +6,14 @@ export default {
   },
   getters: {
     editClass(state) {
-      return state.primaryEditButton ? 'btn-primary' : 'btn-secondary'
+      return state.primaryEditButton ? 'teal' : 'grey'
     },
     deleteClass(state) {
-      return state.dangerDeleteButton ? 'btn-danger' : 'btn-secondary'
+      return state.dangerDeleteButton ? 'red' : 'grey'
     },
     tableClass(state, payload, rootState) {
       return rootState.products.length > 0 && rootState.products[0].price > 500
-        ? 'table-striped'
+        ? 'striped'
         : ''
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <table class="striped" :class="tableClass">
+    <table :class="'striped' == useStripedTable">
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -41,7 +41,10 @@ import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["tableClass", "editClass", "deleteClass"]),
-    ...mapState(["products"])
+    ...mapState(["products"]),
+    ...mapState({
+      useStripedTable: state => state.prefs.stripedTable
+    })
   },
   methods: {
     ...mapActions({
