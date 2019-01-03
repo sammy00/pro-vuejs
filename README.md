@@ -16,3 +16,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 15. Working with Form Elements
 - [x] Chapter 16. Using Components
 - [x] Chapter 17. Understanding the Component Lifecycle
+- [x] Chapter 18. Loosely Coupled Components
