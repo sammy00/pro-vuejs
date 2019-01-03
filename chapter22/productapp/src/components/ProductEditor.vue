@@ -20,7 +20,7 @@
     <div class="row">
       <button class="btn" @click="save">{{ editing ? "Save" : "Create" }}</button>
       &nbsp;
-      <button class="btn grey" @click="cancel">Cancel</button>
+      <router-link to="/" class="btn grey">Cancel</router-link>
     </div>
   </div>
 </template>
@@ -36,13 +36,9 @@ export default {
     };
   },
   methods: {
-    cancel() {
-      this.$store.commit("selectProduct");
-      this.$store.commit("nav/selectComponent", "table");
-    },
     async save() {
       this.$store.dispatch("saveProductAction", this.product);
-      this.$store.commit("nav/selectComponent", "table");
+      this.$router.push("/");
 
       this.product = {};
     },
