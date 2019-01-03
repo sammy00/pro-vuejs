@@ -52,15 +52,22 @@ export default {
   },
   methods: {
     ...mapActions({
-      //getProducts: "getProductsAction",
       deleteProduct: "deleteProductAction"
     }),
     ...mapMutations({
-      createNew: "selectProduct",
-      editProduct: "selectProduct",
+      selectProduct: "selectProduct",
+      selectComponent: "nav/selectComponent",
       setEditButtonColor: "prefs/setEditButtonColor",
       setDeleteButtonColor: "prefs/setDeleteButtonColor"
-    })
+    }),
+    createNew() {
+      this.selectProduct();
+      this.selectComponent("editor");
+    },
+    editProduct(product) {
+      this.selectProduct(product);
+      this.selectComponent("editor");
+    }
   },
   created() {
     //this.getProducts();
