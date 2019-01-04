@@ -15,7 +15,7 @@
         <ol>
           <router-link tag="li" to="/list">List</router-link>
           <router-link tag="li" to="/create">Create</router-link>
-          <router-link tag="li" to="/edit">Edit</router-link>
+          <router-link tag="li" to="/edit" exact>Edit</router-link>
           <router-link tag="li" to="/edit/1">Edit Kayak</router-link>
         </ol>
       </div>
