@@ -1,8 +1,9 @@
-import FilteredData from '../components/FilteredData'
 import Preferences from '../components/Preferences'
 import ProductDisplay from '../components/ProductDisplay'
 import ProductEditor from '../components/ProductEditor'
 import Products from '../components/Products'
+
+const FilteredData = () => import('../components/FilteredData')
 
 export default [
   { path: '/preferences', component: Preferences },
