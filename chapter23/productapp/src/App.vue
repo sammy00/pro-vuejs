@@ -32,3 +32,16 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+router-link {
+  text-align: right;
+  color: yellow;
+  background-color: red;
+}
+li {
+  text-align: left;
+  color: blue;
+  background-color: lightblue;
+}
+</style>
