@@ -9,8 +9,13 @@ Vue.use(VueRouter)
 export default new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: ProductDisplay, alias: '/list' },
-    { path: '/:op(create|edit)/:id(\\d+)?', component: ProductEditor },
+    { name: 'table', path: '/', component: ProductDisplay, alias: '/list' },
+    {
+      name: 'editor',
+      path: '/:op(create|edit)/:id(\\d+)?',
+      component: ProductEditor,
+    },
+
     { path: '*', redirect: '/' },
   ],
 })
