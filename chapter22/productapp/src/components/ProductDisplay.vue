@@ -32,6 +32,7 @@
         </tr>
       </tbody>
     </table>
+    <br>
     <div class="row center">
       <router-link :to="{name: 'editor', params: { op: 'create'}}" class="btn blue">Create New</router-link>
     </div>
