@@ -21,3 +21,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 20. Using a Data Store
 - [x] Chapter 21. Dynamic Components
 - [x] Chapter 22. URL Routing
+- [ ] Chapter 23. URL Routing Element Features
