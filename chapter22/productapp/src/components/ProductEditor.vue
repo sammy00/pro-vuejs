@@ -43,14 +43,19 @@ export default {
 
       this.product = {};
     },
-    selectProduct(selectedProduct) {
+    selectProduct() {
       if ("/create" == this.$route.path) {
         this.editing = false;
         this.product = {};
       } else {
-        this.editing = true;
+        let productId = this.$route.params.id;
+        let selectedProduct = this.$store.state.products.find(
+          p => p.id == productId
+        );
+
         this.product = {};
         Object.assign(this.product, selectedProduct);
+        this.editing = true;
       }
     }
   },
@@ -58,11 +63,8 @@ export default {
     unwatcher();
   },
   created() {
-    unwatcher = this.$store.watch(
-      state => state.selectedProduct,
-      this.selectProduct
-    );
-    this.selectProduct(this.$store.state.selectedProduct);
+    unwatcher = this.$store.watch(state => state.products, this.selectProduct);
+    this.selectProduct();
   }
 };
 </script>
