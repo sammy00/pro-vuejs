@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 export default new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: ProductDisplay },
+    { path: '/', component: ProductDisplay, alias: '/list' },
     { path: '/edit', component: ProductEditor },
     { path: '*', redirect: '/' },
   ],
