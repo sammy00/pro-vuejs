@@ -11,8 +11,18 @@ export default {
       components: { left: ProductDisplay, right: ProductEditor },
     },
     {
-      path: 'tableright',
       components: { left: ProductEditor, right: ProductDisplay },
+      path: 'tableright',
+      beforeEnter: (to, from, next) => {
+        next('/products/list')
+      },
     },
   ],
+  beforeEnter: (to, from, next) => {
+    if (to.path == '/named/tableleft') {
+      next('/preferences')
+    } else {
+      next()
+    }
+  },
 }

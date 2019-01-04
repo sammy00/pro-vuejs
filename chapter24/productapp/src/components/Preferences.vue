@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h4 class="teal white-text center-align">Preferences</h4>
+    <h4 class="card-panel teal white-text center-align">Preferences</h4>
     <div class="row">
-      <input type="checkbox" :checked="primaryEdit" @input="setPrimaryEdit">
-      <label>Primary Color for Edit Buttons</label>
+      <label>
+        <input type="checkbox" :checked="primaryEdit" @input="setPrimaryEdit">
+        <span>Primary Color for Edit Buttons</span>
+      </label>
     </div>
     <div class="row">
-      <input type="checkbox" :checked="dangerDelete" @input="setDangerDelete">
-      <label>Danger Color for Delete Buttons</label>
+      <label>
+        <input type="checkbox" :checked="dangerDelete" @input="setDangerDelete">
+        <span>Danger Color for Delete Buttons</span>
+      </label>
     </div>
   </div>
 </template>
