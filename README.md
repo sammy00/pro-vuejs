@@ -22,4 +22,5 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 21. Dynamic Components
 - [x] Chapter 22. URL Routing
 - [x] Chapter 23. URL Routing Element Features
-- [ ] Chapter 24. Advanced URL Routing
+- [x] Chapter 24. Advanced URL Routing
+- [ ] Chapter 25. Transitions
