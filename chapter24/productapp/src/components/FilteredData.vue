@@ -67,7 +67,10 @@ export default {
     if (to.params.category != "All") {
       next("/filter/All");
     } else {
-      next(async component => await component.getData(to));
+      next(async component => {
+        component.$store.commit("setComponentLoading", false);
+        await component.getData(to);
+      });
     }
   },
   async beforeRouteUpdate(to, from, next) {
