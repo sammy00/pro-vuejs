@@ -1,3 +1,4 @@
+import MessageDisplay from '../components/MessageDisplay'
 import Preferences from '../components/Preferences'
 import ProductDisplay from '../components/ProductDisplay'
 import ProductEditor from '../components/ProductEditor'
@@ -31,4 +32,15 @@ export default [
       next()
     },
   },
+  {
+    path: '/hello',
+    component: MessageDisplay,
+    props: { message: 'Hello, Adam' },
+  },
+  {
+    path: '/hello/:text',
+    component: MessageDisplay,
+    props: (route) => ({ message: `Hello, ${route.params.text}` }),
+  },
+  { path: '/message/:message', component: MessageDisplay, props: true },
 ]
