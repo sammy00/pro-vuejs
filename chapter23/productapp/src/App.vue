@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
       <div class="row center">
+        <!--
         <ul class="tabs">
           <li class="tab">
             <router-link to="/list">List</router-link>
@@ -10,6 +11,11 @@
             <router-link to="/create">Create</router-link>
           </li>
         </ul>
+        -->
+        <ol>
+          <router-link tag="li" to="/list">List</router-link>
+          <router-link tag="li" to="/create">Create</router-link>
+        </ol>
       </div>
       <div class="row">
         <router-view></router-view>
