@@ -9,6 +9,12 @@
           <li class="tab">
             <router-link active-class="red white-text lighten-4" to="/preferences">Preferences</router-link>
           </li>
+          <li class="tab">
+            <router-link active-class="red white-text lighten-4" to="/named/tableleft">Table Left</router-link>
+          </li>
+          <li class="tab">
+            <router-link active-class="red white-text lighten-4" to="/named/tableright">Table Right</router-link>
+          </li>
         </ul>
       </div>
       <div class="row">
