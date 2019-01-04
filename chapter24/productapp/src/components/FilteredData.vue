@@ -10,7 +10,7 @@
         <option>Chess</option>
       </select>
     </div>
-    <h3 v-if="loading" class="card-panel grey white-text center-align">Loading Data...</h3>
+    <h3 v-if="loading" class="card-panel teal white-text center-align">Loading Data...</h3>
     <table v-else class="small">
       <tr>
         <th>ID</th>
@@ -50,6 +50,10 @@ export default {
       }
       let url =
         baseUrl + (this.category == "All" ? "" : `?category=${this.category}`);
+
+      // deliberate delay to trigger the loading panel
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
       this.data.push(...(await Axios.get(url)).data);
       this.loading = false;
     }
