@@ -13,7 +13,7 @@
           <input v-model.number="second">
         </div>
         <div class="col m2">
-          <h5>= {{ displayTotal }}</h5>
+          <h5 id="total">= {{ displayTotal }}</h5>
         </div>
       </div>
     </div>
@@ -38,6 +38,10 @@ export default {
   },
   watch: {
     total(newVal, oldVal) {
+      let classes = ["animated", "fadeIn"];
+      let totalElem = this.$el.querySelector("#total");
+      totalElem.classList.add(...classes);
+
       let t = tween({
         from: Number(oldVal),
         to: Number(newVal),
@@ -45,7 +49,10 @@ export default {
       });
 
       // eslint-disable-next-line
-      t.start(val => (this.displayTotal = val.toFixed(0)));
+      t.start({
+        update: val => (this.displayTotal = val.toFixed(0)),
+        complete: () => totalElem.classList.remove(...classes)
+      });
     }
   }
 };
