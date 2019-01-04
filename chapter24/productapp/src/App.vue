@@ -25,7 +25,7 @@
           class="card-panel orange white-text center-align"
           v-if="componentLoading"
         >Loading Component...</h3>
-        <router-view></router-view>
+        <router-view v-show="!componentLoading"></router-view>
       </div>
     </div>
   </div>
