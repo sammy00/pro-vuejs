@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.0",
+    "materialize-css": "^1.0.0",
     "popmotion": "^8.5.5",
     "vue": "^2.5.21"
   },
