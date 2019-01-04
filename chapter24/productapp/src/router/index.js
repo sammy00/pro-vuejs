@@ -26,7 +26,7 @@ router.beforeEach((to, from, next) => {
 
 router.beforeEach((to, from, next) => {
   if (to.path == '/named/tableright') {
-    next('/products')
+    next({ name: 'editor', params: { op: 'edit', id: 1 } })
   } else {
     next()
   }
