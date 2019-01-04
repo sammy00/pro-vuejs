@@ -1,20 +1,28 @@
 <template>
-  <div class="mx-5 p-2 border border-dark">
-    <h3 class="bg-info text-white text-center p-2">My List</h3>
-    <table class="table table-sm">
+  <div class="card-panel">
+    <h3 class="card-panel center-align white-text teal">My List</h3>
+    <table class="table-small">
       <tr>
         <th>#</th>
         <th>Item</th>
-        <th width="20%" colspan="2"></th>
+        <th></th>
       </tr>
-      <tr v-for="(item, i) in items" v-bind:key="item">
-        <td>{{i}}</td>
-        <td>{{item}}</td>
-        <td>
-          <button class="btn btn-sm btn-info" v-on:click="moveItem(i)">Move</button>
-          <button class="btn btn-sm btn-danger" v-on:click="removeItem(i)">Delete</button>
-        </td>
-      </tr>
+      <transition-group
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        move-class="time"
+        tag="tbody"
+      >
+        <tr v-for="(item, i) in items" :key="item">
+          <td>{{i}}</td>
+          <td>{{item}}</td>
+          <td>
+            <button class="btn btn-sm btn-info" @click="moveItem(i)">Move</button>
+            &nbsp;
+            <button class="btn btn-sm btn-danger" @click="removeItem(i)">Delete</button>
+          </td>
+        </tr>
+      </transition-group>
       <controls v-on:add="addItem"/>
     </table>
   </div>
@@ -42,3 +50,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.time {
+  transition: all 250ms;
+}
+</style>
