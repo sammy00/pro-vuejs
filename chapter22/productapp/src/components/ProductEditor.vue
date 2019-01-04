@@ -68,5 +68,3 @@ export default {
   }
 };
 </script>
-
-<!--Listing 18-8. The Contents of the ProductEditor.vue-->
