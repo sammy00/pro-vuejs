@@ -21,7 +21,7 @@
     <div class="row">
       <button class="btn" @click="save">{{ editing ? "Save" : "Create" }}</button>
       &nbsp;
-      <router-link to="/" class="btn grey">Cancel</router-link>
+      <router-link :to="{name: 'table'}" class="btn grey">Cancel</router-link>
     </div>
   </div>
 </template>
@@ -38,8 +38,8 @@ export default {
   },
   methods: {
     async save() {
-      this.$store.dispatch("saveProductAction", this.product);
-      this.$router.push("/");
+      await this.$store.dispatch("saveProductAction", this.product);
+      this.$router.push({ name: "table" });
 
       this.product = {};
     },
