@@ -1,6 +1,7 @@
+import FilteredData from '../components/FilteredData'
+import Preferences from '../components/Preferences'
 import ProductDisplay from '../components/ProductDisplay'
 import ProductEditor from '../components/ProductEditor'
-import Preferences from '../components/Preferences'
 import Products from '../components/Products'
 
 export default [
@@ -19,4 +20,5 @@ export default [
     ],
   },
   { path: '/edit/:id', redirect: (to) => `/products/edit/${to.params.id}` },
+  { path: '/filter/:category', component: FilteredData },
 ]
