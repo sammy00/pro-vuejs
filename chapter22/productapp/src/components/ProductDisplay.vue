@@ -15,7 +15,7 @@
           <td>{{ p.category }}</td>
           <td>{{ p.price }}</td>
           <td>
-            <router-link to="/edit" :class="editClass" class="btn btn-small">Edit</router-link>&nbsp;
+            <router-link :to="`/edit/${p.id}`" :class="editClass" class="btn btn-small">Edit</router-link>&nbsp;
             <button
               class="btn btn-small"
               :class="deleteClass"

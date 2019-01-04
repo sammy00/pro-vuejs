@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="btn blue center-align white-text">{{ editing ? "Edit" : "Create"}}</h3>
+    <h3 class="card-panel blue center-align white-text">{{ editing ? "Edit" : "Create"}}</h3>
     <div class="row">
       <input v-model="product.id">
       <label>ID</label>

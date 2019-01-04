@@ -11,7 +11,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: ProductDisplay, alias: '/list' },
     { path: '/create', component: ProductEditor },
-    { path: '/edit', component: ProductEditor },
+    { path: '/edit/:id', component: ProductEditor },
     { path: '*', redirect: '/' },
   ],
 })
