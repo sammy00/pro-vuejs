@@ -44,7 +44,7 @@ export default {
       this.product = {};
     },
     selectProduct() {
-      if ("/create" == this.$route.path) {
+      if ("/create" == this.$route.params.op) {
         this.editing = false;
         this.product = {};
       } else {
