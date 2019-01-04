@@ -5,6 +5,8 @@ import Products from '../components/Products'
 
 const FilteredData = () => import('../components/FilteredData')
 
+import dataStore from '../store'
+
 export default [
   { path: '/preferences', component: Preferences },
   {
@@ -21,5 +23,12 @@ export default [
     ],
   },
   { path: '/edit/:id', redirect: (to) => `/products/edit/${to.params.id}` },
-  { path: '/filter/:category', component: FilteredData },
+  {
+    path: '/filter/:category',
+    component: FilteredData,
+    beforeEnter: (to, from, next) => {
+      dataStore.commit('setComponentLoading', true)
+      next()
+    },
+  },
 ]
