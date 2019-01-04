@@ -21,7 +21,8 @@
     <div class="row">
       <button class="btn" @click="save">{{ editing ? "Save" : "Create" }}</button>
       &nbsp;
-      <router-link :to="{name: 'table'}" class="btn grey">Cancel</router-link>
+      <router-link :to="{name: 'table'}" class="btn grey">Cancel</router-link>&nbsp;
+      <router-link v-if="editing" :to="nextUrl" class="btn light-blue">Next</router-link>
     </div>
   </div>
 </template>
@@ -36,6 +37,19 @@ export default {
       product: {}
     };
   },
+  computed: {
+    nextUrl() {
+      if (this.product.id != null && this.$store.state.products != null) {
+        let index = this.$store.state.products.findIndex(
+          p => p.id == this.product.id
+        );
+        let target =
+          index < this.$store.state.products.length - 1 ? index + 1 : 0;
+        return `/edit/${this.$store.state.products[target].id}`;
+      }
+      return "/edit";
+    }
+  },
   methods: {
     async save() {
       await this.$store.dispatch("saveProductAction", this.product);
@@ -43,13 +57,13 @@ export default {
 
       this.product = {};
     },
-    selectProduct() {
-      if ("create" == this.$route.params.op) {
+    selectProduct(route) {
+      if ("create" == route.params.op) {
         this.editing = false;
         this.product = {};
         console.log("hell");
       } else {
-        let productId = this.$route.params.id;
+        let productId = route.params.id;
         let selectedProduct = this.$store.state.products.find(
           p => p.id == productId
         );
@@ -63,9 +77,16 @@ export default {
   beforeDestroy() {
     unwatcher();
   },
+  beforeRouteUpdate(to, from, next) {
+    this.selectProduct(to);
+    next();
+  },
   created() {
-    unwatcher = this.$store.watch(state => state.products, this.selectProduct);
-    this.selectProduct();
+    unwatcher = this.$store.watch(
+      state => state.products,
+      () => this.selectProduct(this.$route)
+    );
+    this.selectProduct(this.$route);
   }
 };
 </script>
