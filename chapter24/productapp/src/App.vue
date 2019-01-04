@@ -21,6 +21,10 @@
         </ul>
       </div>
       <div class="row">
+        <h3
+          class="card-panel orange white-text center-align"
+          v-if="componentLoading"
+        >Loading Component...</h3>
         <router-view></router-view>
       </div>
     </div>
@@ -28,8 +32,13 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "App",
+  computed: {
+    ...mapState(["componentLoading"])
+  },
   created() {
     this.$store.dispatch("getProductsAction");
   }
