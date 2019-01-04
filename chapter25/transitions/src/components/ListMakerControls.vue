@@ -1,6 +1,6 @@
 <template>
   <tfoot>
-    <transition v-on:beforeEnter="beforeEnter" v-on:after-enter="afterEnter" mode="out-in">
+    <transition @enter="enter" mode="out-in">
       <tr v-if="showAdd" key="addCancel">
         <td></td>
         <td>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { styler, tween } from "popmotion";
+
 export default {
   data: function() {
     return {
@@ -34,12 +36,17 @@ export default {
     };
   },
   methods: {
-    afterEnter(el) {
-      el.classList.remove("animated", "fadeIn");
-    },
-    beforeEnter(el) {
+    enter(el, done) {
       if (this.showAdd) {
-        el.classList.add("animated", "fadeIn");
+        let t = tween({
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+          duration: 250
+        });
+        t.start({
+          update: styler(el).set,
+          complete: done
+        });
       }
     },
     handleAdd() {
