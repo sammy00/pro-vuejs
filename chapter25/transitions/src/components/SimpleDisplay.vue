@@ -1,9 +1,9 @@
 <template>
-  <div class="mx-5 border border-dark p-2">
-    <h3 class="bg-warning text-white text-center p-2">Display</h3>
-    <div v-if="show" class="h4 bg-info text-center p-2">Hello, Adam</div>
-    <div class="text-center">
-      <button class="btn btn-primary" v-on:click="toggle">Toggle Visibility</button>
+  <div class="card-panel">
+    <h3 class="card-panel orange center-align white-text">Display</h3>
+    <h4 v-if="show" class="card-panel teal center white-text">Hello, Adam</h4>
+    <div class="row center">
+      <button class="blue btn" @click="toggle">Toggle Visibility</button>
     </div>
   </div>
 </template>
