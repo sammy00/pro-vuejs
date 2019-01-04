@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3 class="btn blue center-align white-text">{{ editing ? "Edit" : "Create"}}</h3>
     <div class="row">
       <input v-model="product.id">
       <label>ID</label>
@@ -43,7 +44,7 @@ export default {
       this.product = {};
     },
     selectProduct(selectedProduct) {
-      if (selectedProduct == null) {
+      if ("/create" == this.$route.path) {
         this.editing = false;
         this.product = {};
       } else {

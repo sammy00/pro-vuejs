@@ -29,7 +29,7 @@
       </tbody>
     </table>
     <div class="row center">
-      <button class="btn blue" to="/create">Create New</button>
+      <router-link class="btn blue" to="/create">Create New</router-link>
     </div>
   </div>
 </template>
