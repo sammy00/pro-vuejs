@@ -19,6 +19,7 @@ export default new Vuex.Store({
   state: {
     products: [],
     selectedProduct: null,
+    componentLoading: false,
   },
   actions: {
     async getProductsAction(context) {
@@ -63,6 +64,9 @@ export default new Vuex.Store({
     },
     selectProduct(currentState, product) {
       currentState.selectedProduct = product
+    },
+    setComponentLoading(currentState, value) {
+      currentState.componentLoading = value
     },
   },
 })
