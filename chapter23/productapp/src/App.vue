@@ -13,8 +13,8 @@
         </ul>
         -->
         <ol>
-          <router-link tag="li" to="/list">List</router-link>
-          <router-link tag="li" to="/create">Create</router-link>
+          <router-link tag="li" event="mouseenter" to="/list">List</router-link>
+          <router-link tag="li" event="mouseenter" to="/create">Create</router-link>
         </ol>
       </div>
       <div class="row">
