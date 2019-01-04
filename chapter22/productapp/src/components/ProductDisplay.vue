@@ -15,8 +15,7 @@
           <td>{{ p.category }}</td>
           <td>{{ p.price }}</td>
           <td>
-            <button class="btn btn-small" :class="editClass" @click="editProduct(p)">Edit</button>
-            &nbsp;
+            <router-link to="/edit" :class="editClass" class="btn btn-small">Edit</router-link>&nbsp;
             <button
               class="btn btn-small"
               :class="deleteClass"
@@ -30,7 +29,7 @@
       </tbody>
     </table>
     <div class="row center">
-      <button class="btn" @click="createNew">Create New</button>
+      <button class="btn blue" to="/create">Create New</button>
     </div>
   </div>
 </template>
