@@ -15,7 +15,11 @@
           <td>{{ p.category }}</td>
           <td>{{ p.price }}</td>
           <td>
-            <router-link :to="`/edit/${p.id}`" :class="editClass" class="btn btn-small">Edit</router-link>&nbsp;
+            <router-link
+              :to="{name: 'editor', params: { op: 'edit', id: p.id}}"
+              :class="editClass"
+              class="btn btn-small"
+            >Edit</router-link>&nbsp;
             <button
               class="btn btn-small"
               :class="deleteClass"
@@ -29,7 +33,7 @@
       </tbody>
     </table>
     <div class="row center">
-      <router-link class="btn blue" to="/create">Create New</router-link>
+      <router-link :to="{name: 'editor', params: { op: 'create'}}" class="btn blue">Create New</router-link>
     </div>
   </div>
 </template>

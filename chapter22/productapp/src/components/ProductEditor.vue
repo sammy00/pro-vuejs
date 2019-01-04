@@ -44,9 +44,10 @@ export default {
       this.product = {};
     },
     selectProduct() {
-      if ("/create" == this.$route.params.op) {
+      if ("create" == this.$route.params.op) {
         this.editing = false;
         this.product = {};
+        console.log("hell");
       } else {
         let productId = this.$route.params.id;
         let selectedProduct = this.$store.state.products.find(
