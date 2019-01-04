@@ -6,7 +6,7 @@ import SideBySideRoutes from './sideBySideRoutes'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     ...BasicRoutes,
@@ -15,3 +15,13 @@ export default new VueRouter({
     { path: '*', redirect: '/products/list' },
   ],
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.path == '/preferences' && from.path.startsWith('/named')) {
+    next(false)
+  } else {
+    next()
+  }
+})
+
+export default router
