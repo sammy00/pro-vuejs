@@ -2,22 +2,20 @@
   <div id="app">
     <div class="container">
       <div class="row center">
-        <!--
         <ul class="tabs">
           <li class="tab">
-            <router-link to="/list">List</router-link>
+            <router-link class="white-text" exact-active-class="teal" to="/list">List</router-link>
           </li>
           <li class="tab">
-            <router-link to="/create">Create</router-link>
+            <router-link class="white-text" exact-active-class="teal" to="/create">Create</router-link>
+          </li>
+          <li class="tab">
+            <router-link class="white-text" exact-active-class="teal" to="/edit">Edit</router-link>
+          </li>
+          <li class="tab">
+            <router-link class="white-text" exact-active-class="teal" to="/edit/1">Edit Kayak</router-link>
           </li>
         </ul>
-        -->
-        <ol>
-          <router-link tag="li" to="/list">List</router-link>
-          <router-link tag="li" to="/create">Create</router-link>
-          <router-link tag="li" to="/edit" exact>Edit</router-link>
-          <router-link tag="li" to="/edit/1">Edit Kayak</router-link>
-        </ol>
       </div>
       <div class="row">
         <router-view></router-view>
