@@ -18,6 +18,8 @@
 
     <div class="container">
       <transition
+        appear
+        appear-active-class="animated zoomIn"
         enter-active-class="animated fadeIn"
         leave-active-class=" animated fadeOut"
         mode="out-in"
