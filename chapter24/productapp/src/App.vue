@@ -15,6 +15,9 @@
           <li class="tab">
             <router-link active-class="red white-text lighten-4" to="/named/tableright">Table Right</router-link>
           </li>
+          <li class="tab">
+            <router-link active-class="red white-text lighten-4" to="/filter/All">Filter Data</router-link>
+          </li>
         </ul>
       </div>
       <div class="row">

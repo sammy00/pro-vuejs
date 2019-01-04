@@ -1,17 +1,17 @@
 <template>
   <div>
-    <h3 class="bg-primary text-center text-white p-2">Data for {{ category }}</h3>
-    <div class="text-center m-2">
+    <h3 class="card-panel blue center-align white-text">Data for {{ category }}</h3>
+    <div class="row">
       <label>Category:</label>
-      <select v-model="category">
+      <select v-model="category" class="browser-default">
         <option>All</option>
         <option>Watersports</option>
         <option>Soccer</option>
         <option>Chess</option>
       </select>
     </div>
-    <h3 v-if="loading" class="bg-info text-white text-center p-2">Loading Data...</h3>
-    <table v-else class="table table-sm table-bordered">
+    <h3 v-if="loading" class="card-panel grey white-text center-align">Loading Data...</h3>
+    <table v-else class="small">
       <tr>
         <th>ID</th>
         <th>Name</th>
