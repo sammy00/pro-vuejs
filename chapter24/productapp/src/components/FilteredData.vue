@@ -60,7 +60,11 @@ export default {
     }
   },
   async beforeRouteEnter(to, from, next) {
-    next(async component => await component.getData(to));
+    if (to.params.category != "All") {
+      next("/filter/All");
+    } else {
+      next(async component => await component.getData(to));
+    }
   },
   async beforeRouteUpdate(to, from, next) {
     this.data.splice(0, this.data.length);
