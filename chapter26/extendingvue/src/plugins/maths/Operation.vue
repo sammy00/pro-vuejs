@@ -34,6 +34,7 @@ export default {
     symbol() {
       return Vue.getSymbol(this.operation);
     },
+    // eslint-disable-next-line
     total() {
       switch (this.operation.toLowerCase()) {
         case "add":
