@@ -2,6 +2,7 @@
   <div id="app" class="container">
     <numbers/>
     <subtraction/>
+    <maths operation="Divide" firstVal="10" secondVal="20"/>
   </div>
 </template>
 
