@@ -12,7 +12,7 @@
         <div class="col m2">
           <input v-model.number="second">
         </div>
-        <div class="col">
+        <div class="col" v-colorize="total">
           <h5>= {{ total }}</h5>
         </div>
       </div>
@@ -21,13 +21,16 @@
 </template>
 
 <script>
+import Colorize from "../directives/colorize";
+
 export default {
-  data: function() {
+  data() {
     return {
       first: 10,
       second: 20
     };
   },
+  directives: { Colorize },
   computed: {
     total() {
       return this.first + this.second;
