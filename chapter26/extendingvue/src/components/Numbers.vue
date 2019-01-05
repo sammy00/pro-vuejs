@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col m2">
-          <input v-colorize="first > 45" v-model.number="first">
+          <input v-colorize:teal="first > 45" v-model.number="first">
         </div>
         <div class="col m1">
           <h5>+</h5>
