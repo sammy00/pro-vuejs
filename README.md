@@ -24,3 +24,4 @@ Repository Hosts the Examples for Book &lt;Pro Vue.js 2>
 - [x] Chapter 23. URL Routing Element Features
 - [x] Chapter 24. Advanced URL Routing
 - [x] Chapter 25. Transitions
+- [x] Chapter 26. Extending Vue.js
