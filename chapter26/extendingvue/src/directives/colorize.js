@@ -1,9 +1,10 @@
 export default {
   update(el, binding) {
+    const bgClass = binding.arg || 'red'
     if (binding.value) {
-      el.classList.add('red', 'white-text')
+      el.classList.add(bgClass, 'white-text')
     } else {
-      el.classList.remove('red', 'white-text')
+      el.classList.remove(bgClass, 'white-text')
     }
   },
 }
