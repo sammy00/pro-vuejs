@@ -21,20 +21,14 @@
 </template>
 
 <script>
-import Colorize from "../directives/colorize";
+import mixin from "../mixins/numbersMixin";
 
 export default {
-  data() {
-    return {
-      first: 50,
-      second: 20
-    };
-  },
-  directives: { Colorize },
   computed: {
     total() {
       return this.first + this.second;
     }
-  }
+  },
+  mixins: [mixin]
 };
 </script>
