@@ -4,15 +4,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col m2">
-          <input v-colorize:teal="first > 45" v-model.number="first">
+          <input v-colorize:teal.bg="first > 45" v-model.number="first">
         </div>
         <div class="col m1">
           <h5>+</h5>
         </div>
         <div class="col m2">
-          <input v-model.number="second">
+          <input v-colorize:teal="second > 30" v-model.number="second">
         </div>
-        <div class="col" v-colorize="total > 50">
+        <div class="col" v-colorize.bg.text="total > 50">
           <h5>= {{ total }}</h5>
         </div>
       </div>
