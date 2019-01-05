@@ -13,7 +13,7 @@
           <input v-colorize:teal="second > 30" v-model.number="second">
         </div>
         <div class="col" v-colorize.bg.text="total > 50">
-          <h5>= {{ total }}</h5>
+          <h5>= {{ total | currency }}</h5>
         </div>
       </div>
     </div>
@@ -21,12 +21,14 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 import mixin from "../mixins/numbersMixin";
 
 export default {
   computed: {
     total() {
-      return this.first + this.second;
+      return Vue.sumValues(this.first, this.second);
     }
   },
   mixins: [mixin]
