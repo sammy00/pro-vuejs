@@ -1,6 +1,6 @@
 <template>
   <div class="card-panel">
-    <h3 class="card-panel center-align green white-text">Numbers</h3>
+    <h3 class="card-panel center-align teal white-text">Subtraction</h3>
     <div class="container-fluid">
       <div class="row">
         <div class="col m2">
