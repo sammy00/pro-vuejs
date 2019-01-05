@@ -1,16 +1,20 @@
 <template>
-  <div class="mx-5 p-2 border border-dark">
-    <h3 class="bg-success text-white text-center p-2">Numbers</h3>
+  <div class="card-panel">
+    <h3 class="card-panel center-align green white-text">Numbers</h3>
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <input class="form-control" v-model.number="first">
+        <div class="col m2">
+          <input v-model.number="first">
         </div>
-        <div class="col-1 h3">+</div>
-        <div class="col">
-          <input class="form-control" v-model.number="second">
+        <div class="col m1">
+          <h5>+</h5>
         </div>
-        <div class="col h3">= {{ total }}</div>
+        <div class="col m2">
+          <input v-model.number="second">
+        </div>
+        <div class="col">
+          <h5>= {{ total }}</h5>
+        </div>
       </div>
     </div>
   </div>
