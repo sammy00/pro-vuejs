@@ -61,7 +61,6 @@ export default {
       if ("create" == route.params.op) {
         this.editing = false;
         this.product = {};
-        console.log("hell");
       } else {
         let productId = route.params.id;
         let selectedProduct = this.$store.state.products.find(
