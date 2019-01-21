@@ -21,12 +21,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
   computed: {
-    //...mapState({
-    //  dangerDelete: state => state.prefs.dangerDeleteButton
-    //}),
     dangerDelete: {
       get() {
         return this.$store.state.prefs.dangerDeleteButton;
@@ -43,16 +39,6 @@ export default {
         this.$store.commit("prefs/setEditButtonColor", val);
       }
     }
-  },
-  methods: {
-    /*
-    setPrimaryEdit() {
-      this.$store.commit("prefs/setEditButtonColor", !this.primaryEdit);
-    },
-    setDangerDelete() {
-      this.$store.commit("prefs/setDeleteButtonColor", !this.dangerDelete);
-    }
-    */
   }
 };
 </script>
