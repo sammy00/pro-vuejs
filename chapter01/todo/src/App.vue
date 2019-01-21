@@ -58,7 +58,7 @@
             </label>
           </div>
           <div class="col s6">
-            <button class="btn" v-on:click="deleteCompleted">Delete Completed</button>
+            <button class="btn orange" v-on:click="deleteCompleted">Delete Completed</button>
           </div>
         </form>
       </div>
