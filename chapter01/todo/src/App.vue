@@ -25,7 +25,7 @@
                 <td>{{t.action}}</td>
                 <td>
                   <label>
-                    <input type="checkbox" v-model="t.done">
+                    <input class="filled-in" type="checkbox" v-model="t.done">
                     <span>{{t.done}}</span>
                   </label>
                 </td>
@@ -53,7 +53,7 @@
         <form action="#" class="col s12">
           <div class="col s6">
             <label class="right">
-              <input type="checkbox" v-model="hideCompleted">
+              <input class="filled-in" type="checkbox" v-model="hideCompleted">
               <span>Hide completed tasks</span>
             </label>
           </div>
