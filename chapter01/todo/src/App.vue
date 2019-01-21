@@ -23,14 +23,11 @@
             <tbody>
               <tr class="row" v-for="t in filteredTasks" v-bind:key="t.action">
                 <td>{{t.action}}</td>
-                <!--<td>{{t.done}}</td>-->
                 <td>
-                  <form action="#">
-                    <label>
-                      <input type="checkbox" v-model="t.done">
-                      <span>{{t.done}}</span>
-                    </label>
-                  </form>
+                  <label>
+                    <input type="checkbox" v-model="t.done">
+                    <span>{{t.done}}</span>
+                  </label>
                 </td>
               </tr>
             </tbody>
