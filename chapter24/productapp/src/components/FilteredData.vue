@@ -42,6 +42,7 @@ export default {
     };
   },
   methods: {
+    // while fetching data, should we disable updating route??
     async getData(route) {
       if (route.params != null && route.params.category != null) {
         this.category = route.params.category;
@@ -74,6 +75,7 @@ export default {
     }
   },
   async beforeRouteUpdate(to, from, next) {
+    //console.log(to.path);
     this.data.splice(0, this.data.length);
     await this.getData(to);
     next();
